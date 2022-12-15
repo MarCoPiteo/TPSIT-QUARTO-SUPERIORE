@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Esercizio Cerchi</title>
+	<style type="text/css">
+		body {
+			background-color: black;
+		}
+
+		* {
+			color: white;
+			margin: 0;
+		}
+
+		.flex {
+			display: flex;
+		}
+	</style>
+</head>
+<body>
+	<div class="formWrapper flex">
+		<div style="margin-right: 40px;">
+			<label id="accelerationXValue"></label>
+			<div>
+				<input type="range" name="accelerazioneX" min="-0.04" max="0.04" step="0.01" value="-0.01">
+			</div>
+		</div>
+
+		<div>
+			<label id="accelerationYValue"></label>
+			<div>
+				<input type="range" name="accelerazioneY" min="-0.04" max="0.04" step="0.01" value="0.01">
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="static/js/p5/p5.min.js"></script>
+	<script type="text/javascript" src="static/js/MotoAccelerato.js"></script>
+	<script type="text/javascript" src="static/js/Java.js"></script>
+</body>
+</html>
