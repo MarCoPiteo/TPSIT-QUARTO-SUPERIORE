@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		.myBox {
+			width: 150px;
+			height: 300px;
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	<div class="myBox"> </div>
+	<a 
+		id="myLink"
+		class="btn link whiteBg" 
+		href="google.it">Click Here</a>
+
+	<script type="text/javascript">
+		let link = document.querySelector("#myLink")
+		let r = 100
+		let g = 80
+		let b = 120
+
+		console.log(link)
+
+		link.addEventListener("click", function(e) {
+			e.preventDefault()
+			let box = document.querySelector(".myBox")
+			box.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
+
+			g = g + 10
+			b = b + 30
+			r = r + 5
+		})
+	</script>
+</body>
+</html>
