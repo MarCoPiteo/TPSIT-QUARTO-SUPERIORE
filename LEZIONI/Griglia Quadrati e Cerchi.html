@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Griglia Cerchi e Quadrati</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <script type="text/javascript" src="../p5/p5.min.js"></script>
+  <script type="text/javascript">
+    let width = 600
+    let height = 300
+
+    let d = 60
+
+    let x = 0
+    let y = 0
+
+    let r = 0
+    let g = 0
+    let b = 0
+
+    function setup () {
+      createCanvas(width, height)
+      background(0,250,47)
+    }
+
+    function draw() {
+      let rand = random()
+      
+      r = random(0, 255)
+      g = random(0, 255)
+      b = random(0, 255)
+
+      if (rand > 0.5) {      
+        fill(r, g, b)
+        square(x, y, d)
+      } else if (rand < 0.5) {
+        fill(r, g, b)
+        circle(x+d/2, y+d/2, d)
+      }
+      
+      x = x + d
+
+      if (x>600) {
+        x = 0
+        y = y + d
+      }
+    }
+  </script>
+</body>
+</html>
