@@ -18,7 +18,8 @@
 		let l = document.querySelector("#myBtn")
 
 		l.addEventListener("click", function(e) {
-			e.preventDefault(e.target)
+			e.preventDefault()
+			consol.log(e.target)
 		})
 	</script>-->
 
@@ -27,13 +28,22 @@
 	</a>
 
 	<br>
-	
+
 	<a href="https://youtube.it" id="myBtn2">
 		Vai su Youtube
 	</a>
 
 	<script type="text/javascript">
-		
+		let links = document.querySelector("a")
+
+		for (let i=0; i<links.length; i++) {
+			let l = links[i]
+
+			l.addEventListener("click", function(e) {
+				e.preventDefault()
+				console.log(e.currentTarget.href)
+			})
+		}
 	</script>
 </body>
 </html>
