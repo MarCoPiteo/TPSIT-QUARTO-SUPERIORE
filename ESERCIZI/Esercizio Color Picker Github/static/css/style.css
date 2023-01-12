@@ -21,6 +21,7 @@ body {
 }
 
 
+
 .mainTitle {
 	margin-top: 38.3vh;
 	font-size: 78px;
@@ -32,16 +33,51 @@ body {
 
 
 .boxContainer {
-	margin-top: 26px;
+	margin-top: 31px;
 }
 .colorLink {
-
-}
-.colorContent {
 	margin-right: 20px;
+}
+.colorLink::last-child {
+	margin-right: 0;
+}
+
+.colorContainer {
+	border: 1px solid black;
+	padding-left: 4px;
+	padding-top: 4px;
+	border-radius: 10px;
+	width: 60px;
+	height: 60px;
+	background-color: white;
+}
+.colorContainer:hover {
+	border: 3px solid black;
+	padding-left: 2px;
+	padding-top: 2px;
+}
+
+.colorContent {
 	width: 50px;
 	height: 50px;
-	background-color: white;
 	border-radius: 10px;
-	border: 5px solid black;
+}
+
+#red {
+	background-color: #FE0202;
+}
+#gray {
+	background-color: #59BC98;
+}
+#blu {
+	background-color: #2594D2;
+}
+#green {
+	background-color: #72BC59;
+}
+#violet {
+	background-color: #BC59A0;
+}
+#yellow {
+	background-color: #DCF63C;
 }
