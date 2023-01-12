@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<a href="https.google.com" id="myBtn">
+		Click Me!
+	</a>
+
+	<script type="text/javascript">
+		let l = document.querySelector("#myBtn")
+
+		l.addEventListener("click", function(e) {
+			e.preventDefault(e.target.href)
+
+		})
+	</script>
+</body>
+</html>
