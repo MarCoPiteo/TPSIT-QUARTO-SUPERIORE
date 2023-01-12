@@ -12,5 +12,10 @@ for (let i=0; i<link.length; i++) {
 
 		let body = document.querySelector("body")
 		body.style.background = el.dataset.bgcolor
+
+		/*let text = document.querySelector(".fontRussoOne")
+		let previousColor = link[i-1]
+		console.log(previousColor)
+		text*/
 	})
 }
