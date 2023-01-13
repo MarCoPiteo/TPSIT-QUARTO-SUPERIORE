@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Esercizi da Beginners: Numero 1</title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		let mese = prompt("Inserisci il mese ")
+
+		switch (mese) {
+			case "febbraio":
+				console.log(`Il mese di ${mese} ha 28 giorni`)
+			break;
+
+			case "aprile":
+			case "giugno":
+			case "settembre":
+			case "novembre":
+				console.log(`Il mese di ${mese} ha 30 giorni`)
+			break;
+			
+			case "gennaio":
+			case "marzo":
+			case "maggio":
+			case "luglio":
+			case "agosto":
+			case "ottobre":
+			case "novembre":
+				console.log(`Il mese di ${mese} ha 31 giorni`)
+			break;
+
+			default:
+				console.log("Inserire un mese corretto")
+			break;
+		}
+	</script>
+</body>
+</html>

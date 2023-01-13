@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Esercizi da Beginners: Numero 5</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /*let num = prompt ("Inserisci il numero da convertire ")
+        let binary = (num % 2).toString();  //25 diviso 2, 12 con RESTO di 1. Scrivo 1 e non divido 25
+        console.log(binary);
+        for (; num > 1; ) {     //25 è maggiore di 1? SI
+            num = parseInt(num / 2);    //25 diviso 2, 12
+            binary =  (num % 2) + (binary);     //12 diviso 2, 6 con RESTO di 0. Scrivo 0 e aggiungo 1 di prima, 01 ecc
+            console.log(binary);
+        }
+        console.log(binary);*/
+
+        /*let ora = prompt("inserire un ora");
+        let minuti = prompt("inserire minuti");
+
+        ora = parseInt(ora);
+        minuti = parseInt(minuti);
+
+        let oraNewYork;
+        let oraTokyo;
+        let oraMosca;
+
+        //ora New York
+
+        if (minuti == 00) {
+            minuti = "00";
+        }
+
+        if(minuti < 10){
+            minuti = "0" + minuti;
+        }
+
+        if (ora < 6) {
+            oraNewYork = ora - 6;
+            oraNewYork = oraNewYork + 24;
+        }else{
+            oraNewYork = ora - 6;
+        }
+
+        console.log(`l'ora a New York Ă¨: ${oraNewYork}:${minuti}`);
+
+        //ora Tokyo
+
+        if (ora > 8) {
+            oraTokyo = ora + 8;
+            if (oraTokyo >= 24) {
+                oraTokyo = oraTokyo - 24;
+            }
+        }else{
+            oraTokyo = ora + 8;
+        }
+
+        console.log(`l'ora a Tokyo Ă¨: ${oraTokyo}:${minuti}`);
+
+        //ora Mosca +1
+
+        if (ora > 1) {
+            oraMosca = ora + 1;
+            if (oraMosca >= 24) {
+                oraMosca = oraMosca - 24;
+            }
+            
+        }else{
+            oraMosca = ora + 1;
+        }
+            
+        console.log(`l'ora a Mosca Ă¨: ${oraMosca}:${minuti}`);*/
+
+        let orarioItalia = prompt("Inserisci l'ora in Italia")
+        orarioItalia = parseInt(orarioItalia)
+
+        if(orarioItalia<=23 && orarioItalia>=0) {
+
+        } else {
+            orarioItalia = prompt("Inserisci un ora Italiana giusta")
+        }
+
+
+        let minutiItalia = prompt("Inserisci i minuti in Italia")
+        minutiItalia = parseInt(minutiItalia)
+
+        if(minutiItalia<=59 && minutiItalia>=0) {
+
+        } else {
+            minutiItalia = prompt("Inserisci i minuti giusti")
+        }
+
+        let c = 24 - orarioItalia
+
+        let orarioNY = orarioItalia - 6
+        let orarioTokyo = orarioItalia + 9
+        let orarioMosca = orarioItalia + 1
+
+
+        let fusoNY = (orarioItalia + c + orarioNY)%24
+        console.log(`A New York sono le ore ${fusoNY}.${minutiItalia}`)
+
+        let fusoTokyo = (orarioItalia + c + orarioTokyo)%24
+        console.log(`A Tokyo sono le ore ${fusoTokyo}.${minutiItalia}`)
+
+        let fusoMosca = (orarioItalia + c + orarioMosca)%24
+        console.log(`A Mosca sono le ore ${fusoMosca}.${minutiItalia}`)
+    </script>
+</body>
+</html>

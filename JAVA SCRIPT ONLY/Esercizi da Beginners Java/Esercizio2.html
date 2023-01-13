@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Esercizi da Beginners: Numero 2</title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		let voto = prompt("Inserisci il voto ")
+		voto = parseFloat(voto)
+
+		if (voto<6) {
+			console.log(`Il voto ${voto} è insufficiente`)
+		} else if (voto>=6 && voto<=6.9) {
+			console.log(`Il voto ${voto} è sufficiente`)			
+		} else if (voto>=7 && voto<=7.9) {			
+			console.log(`Il voto ${voto} è discreto`)
+		} else if (voto>=8) {			
+			console.log(`Il voto ${voto} è buono`)
+		}
+	</script>
+</body>
+</html>
