@@ -1,9 +1,4 @@
 # TPSIT-REPOSITORIES
-| Mese | LEZIONI | ESERCIZI | WEB DESIGN |
-| --- | --- | --- | --- 
-| --- | **Cose** | _Don't_ | [Need](http://makeuseof.com) 
-| --- | A | *__Guarda__* | 'Bella'
-
 
 | Mese | LEZIONI | ESERCIZI | WEB DESIGN | JAVA SCRIPT ONLY |
 | --- | :---: | --- | :---: | --- |
