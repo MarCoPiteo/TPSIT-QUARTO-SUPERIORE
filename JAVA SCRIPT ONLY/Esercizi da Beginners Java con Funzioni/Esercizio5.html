@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Esercizi da Beginners: Numero 5</title>
+</head>
+<body>
+    <script type="text/javascript">
+        let orarioItalia = prompt("Inserisci l'ora in Italia")
+        orarioItalia = parseInt(orarioItalia)
+
+        while(orarioItalia>=24 || orarioItalia<0) {
+            orarioItalia = prompt("Inserisci un ora Italiana giusta")
+        }
+        if (orarioItalia==0) {
+            orarioItalia=24
+        }
+
+        let minutiItalia = inputMinuti()
+        let c = 24 - orarioItalia
+
+        let fusoNY = calcFusoNY(orarioItalia, c)
+        console.log(`A New York sono le ore ${fusoNY}.${minutiItalia}`)
+
+        let fusoTokyo = calcFusoTokyo(orarioItalia, c)
+        console.log(`A Tokyo sono le ore ${fusoTokyo}.${minutiItalia}`)
+
+        let fusoMosca = calcFusoMosca(orarioItalia, c)
+        console.log(`A Mosca sono le ore ${fusoMosca}.${minutiItalia}`)
+
+
+        function inputMinuti() {
+            let minutiInseriti = prompt("Inserisci i minuti in Italia")
+            minutiInseriti = parseInt(minutiInseriti)
+    
+            while(minutiInseriti>59 || minutiInseriti<=0) {
+                minutiInseriti = prompt("Inserisci i minuti giusti")
+            } 
+
+            return minutiInseriti
+        }
+
+
+        function calcFusoNY(ItalyTime, operatore) {    
+            let orarioNY = ItalyTime - 6
+            let NYtime = (ItalyTime + operatore + orarioNY)%24   
+
+            return NYtime 
+        }
+        function calcFusoTokyo(ItalyTime, operatore) {
+            let orarioTokyo = ItalyTime + 7
+            let TokyoTime = (ItalyTime + operatore + orarioTokyo)%24
+
+            return TokyoTime
+        }
+        function calcFusoMosca(ItalyTime, operatore) {
+            let orarioMosca = ItalyTime + 1
+            let MoscaTime = (ItalyTime + operatore + orarioMosca)%24
+
+            return MoscaTime
+        }
+    </script>
+</body>
+</html>

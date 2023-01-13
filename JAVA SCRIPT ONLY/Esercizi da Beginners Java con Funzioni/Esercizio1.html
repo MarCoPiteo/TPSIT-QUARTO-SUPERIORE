@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Esercizi da Beginners: Numero 1</title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		let mese = prompt("Inserisci il mese ")
+		mese = mese.toLowerCase()
+		let giorni = switchMesi(mese)
+		while(giorni==0) {
+			mese = prompt("Inserisci il mese corretto ")
+			mese = mese.toLowerCase()
+			giorni = switchMesi(mese)
+		}
+		console.log(`Il mese di ${mese} ha ${giorni} giorni`)
+
+
+		function switchMesi(month) {
+			let days
+
+			switch (month) {
+				case "febbraio":
+					days = 28					
+				break;
+
+				case "aprile":
+				case "giugno":
+				case "settembre":
+				case "novembre":
+					days = 30
+				break;
+				
+				case "gennaio":
+				case "marzo":
+				case "maggio":
+				case "luglio":
+				case "agosto":
+				case "ottobre":
+				case "dicembre":
+					days = 31
+				break;
+
+				default:
+					console.log("Inserire un mese corretto")
+					days = 0
+				break;
+			}	
+			return days
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Esercizi da Beginners: Numero 3</title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		let ore = prompt("Inserisci il numero di ore da trasformare")
+		let minuti = prompt("Inserisci il numero di minuti da trasformare")
+		
+		ore = parseInt(ore)
+		minuti = parseInt(minuti)
+
+		let millisecondi = calcMillisecondi(minuti)
+
+		function calcMillisecondi(minutes) {
+			let minutiDaTrasformare = (ore * 60) + minutes
+			let milliseconds = minutiDaTrasformare*60*1000
+
+			return milliseconds
+		}		
+		console.log(`Le ore e i minuti da lei inseriti, corrispondono a ${millisecondi} millisecondi`)
+	</script>
+</body>
+</html>
