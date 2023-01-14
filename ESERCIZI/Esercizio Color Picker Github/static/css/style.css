@@ -9,6 +9,10 @@ body {
 }
 
 
+.transition{
+	transition: all 2s ease-in-out;
+}
+
 
 .flex {
 	display: flex;
@@ -51,7 +55,7 @@ body {
 	background-color: white;
 }
 .colorContainer:hover {
-	border: 3px solid black;
+	border-width: 3px;
 	padding: 2px;
 }
 
