@@ -5,7 +5,7 @@
 }
 
 .fontAvengero {
-
+	font-family: 'Avengero Disassembled', sans-serif;
 } 
 .fontThanos {
 
@@ -14,13 +14,32 @@
 
 }
 
+
+.flex {
+	display: flex;
+	justify-content: center;
+}
+
 .m-lr-auto {
 	margin-right: auto;
 	margin-left: auto;
 }
 
 
-.titleImage {
-	width: 280px;
+.mainTitle {
+	/*flex-direction: column; CHIEDERE SE FLEX DIRECTION VA MESSO O NO, PERCHE SENZA NON CAMBIA NIENTE*/ 
+	width: 61.1vh;
+}
+.title {
+	font-size: 5.85vh;
+	color: #A72A2A;
+	text-shadow: 0.19vh 0 #7E7070, -0.19vh 0 #7E7070, 0 0.19vh #7E7070, 0 -0.19vh #7E7070,
+             0.19vh 0.19vh #7E7070, -0.19vh -0.19vh #7E7070, 0.19vh -0.19vh #7E7070, -0.19vh 0.19vh #7E7070;
+	margin-top: -2.2vh;
 
+}
+.titleImage {
+	position: relative;
+	width: 17.1vh;
+	height: 9.2vh;
 }
