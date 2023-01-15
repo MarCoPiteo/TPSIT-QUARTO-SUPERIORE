@@ -25,6 +25,11 @@
 	margin-left: auto;
 }
 
+.container {
+	/*DA CHIEDERE SE HA SENSO METTERLO*/
+}
+
+
 
 .mainTitle {
 	/*flex-direction: column; CHIEDERE SE FLEX DIRECTION VA MESSO O NO, PERCHE SENZA NON CAMBIA NIENTE*/ 
@@ -42,4 +47,23 @@
 	position: relative;
 	width: 17.1vh;
 	height: 9.2vh;
+}
+
+
+.trisTable {
+	height: 35.15vh;
+	width: 35.15vh;
+	margin-top: 16.4vh;
+}
+.trisLink {
+}
+
+.trisLogo {
+	width: 35.15vh;
+	margin-top: 28.3%;
+}
+.trisString {
+	width: 35.15vh;
+	position: relative;
+	transform: translateY(-78%); CAPIRE BENE QUESTA COSA DEL -78%. BISOGNA CAPIRE DA DOVE ESCE IL 78%*/
 }
