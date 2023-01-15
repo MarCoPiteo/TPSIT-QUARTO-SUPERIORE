@@ -1,0 +1,26 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.fontAvengero {
+
+} 
+.fontThanos {
+
+}
+.fontIronMan {
+
+}
+
+.m-lr-auto {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+.titleImage {
+	width: 280px;
+
+}
