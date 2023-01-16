@@ -55,7 +55,26 @@
 	width: 35.15vh;
 	margin-top: 16.4vh;
 }
-.trisLink {
+
+.pitchDivContainer {
+	flex-wrap: wrap;
+	width: 100%;
+	position: relative;
+	/*transform: translateY(-655px); DA VEDERE QUESTA COSA DEL MOVIMENTO*/
+	transform: translateY(-63.9vh); /*CONTROLLARE ANCHE QUESTA*/
+}
+.pitchSquare {
+	flex-grow: 1;
+	width: 33.3%;
+	height: 11.7vh;
+	border-right: 4px solid	black;
+	border-bottom: 4px solid black;
+}
+.noBorder-r {
+	border-right: 0;
+}
+.noBorder-b {
+	border-bottom: 0;
 }
 
 .trisLogo {
