@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+
+	<style type="text/css">
+		.trisGrid{
+			display: flex;
+			flex-direction: column;
+		}
+
+		.row{
+			display: flex;
+		}
+
+		.col{
+			width: 40px;
+			height: 40px;
+			background: yellow;
+			border: 1px solid black;
+		}
+
+		.gridBtn{
+			display: block;
+			width: 40px;
+			height: 40px;
+		}
+	</style>
+</head>
+<body>
+	<div class="trisGrid">
+		<div class="row">
+			<div class="col">
+				<a href="#" class="gridBtn"></a>
+			</div>
+			<div class="col">
+				<a href="#" class="gridBtn"></a>
+			</div>
+			<div class="col">
+				<a href="#" class="gridBtn"></a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<a href="#" class="gridBtn"></a>
+			</div>
+			<div class="col">
+				<a href="#" class="gridBtn"></a>
+			</div>
+			<div class="col">
+				<a href="#" class="gridBtn"></a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<a href="#" class="gridBtn"></a>
+			</div>
+			<div class="col">
+				<a href="#" class="gridBtn"></a>
+			</div>
+			<div class="col">
+				<a href="#" class="gridBtn"></a>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		/*let ar = []
+
+		ar.push(1)   //ar.push aggiunge elementi all'Array
+		ar.push(5)
+		ar.push(2)
+		ar.push(25)
+		ar.push(29)
+		ar.push(50)
+
+		console.log(ar[3])
+
+		let lastEl = ar[5]
+		console.log(lastEl)
+
+		ar.pop()    //ar.pop elimina l'ultimo elemento dell'Array
+		console.log(lastEl)*/
+
+		let grid = [
+			["X", "O", "X"],
+			["X", null, "X"],
+			[null, null, null],
+		]
+
+		grid[2][2] = "O"
+
+		for(let i = 0; i < grid.length; i++) {
+			let row = grid[i]
+			for(let j = 0; j < row.length; j++) {
+				console.log(`Posizione ${i}, ${j} --> ${row[j]}`)
+			}
+		}
+
+
+		let links = document.querySelectorAll(".gridBtn"),
+			currentPlayer = 1
+
+
+		for(let i = 0; i < links.length; i++){
+			let link = links[i]
+			link.addEventListener("click", function(e){
+				e.preventDefault()
+				console.log("HELLO!")
+				// e.currentTarget sarebbe uguale a link
+				
+				if(cellIsEmpty){
+					// Mettiamo una X o un O a seconda del turno del player
+					// Cambiamo il currentPlayer -> currentPlayer = 2
+				}
+			})
+		}
+	</script>
+</body>
+</html>
