@@ -8,61 +8,253 @@
 	font-family: 'Avengero Disassembled', sans-serif;
 } 
 .fontThanos {
-
+	font-family: 'GALACTIC VANGUARDIAN NCV', sans-serif;
+	letter-spacing: 0em;			CHIEDERE PERCHE NON FUNZIONA IL LETTERE SPACING
 }
 .fontIronMan {
-
+	font-family: 'CGF Arch Reactor', sans-serif;
+	letter-spacing: 0em;			CHIEDERE PERCHE NON FUNZIONA IL LETTERE SPACING
+	background: #E7D160;
+	/*background: radial-gradient(ellipse farthest-side at bottom center, #E7D160 28%, #E09E1D 70%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;*/
+	background: conic-gradient(from -0.13deg at 50% 50%, #E09E1D 0deg, rgba(231, 209, 96, 0) 180deg, #E09E1D 360deg);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			text-fill-color: transparent;						
 }
 
 
 .flex {
 	display: flex;
-	justify-content: center;
+	align-items: center;
 }
-
-.m-lr-auto {
-	margin-right: auto;
-	margin-left: auto;
+.flexColumn {
+	flex-direction: column;
 }
-
-.container {
-	/*DA CHIEDERE SE HA SENSO METTERLO*/
+.flexRow {
+	flex-direction: row;
 }
 
 
 
-.mainTitle {
-	/*flex-direction: column; CHIEDERE SE FLEX DIRECTION VA MESSO O NO, PERCHE SENZA NON CAMBIA NIENTE*/ 
-	width: 61.1vh;
+.mainContainer {
+	min-height: 100vh;
+}
+
+
+.titleRow {
+	width: 625px;
 }
 .title {
-	font-size: 5.85vh;
+	font-size: 60px;
 	color: #A72A2A;
-	text-shadow: 0.19vh 0 #7E7070, -0.19vh 0 #7E7070, 0 0.19vh #7E7070, 0 -0.19vh #7E7070,
-             0.19vh 0.19vh #7E7070, -0.19vh -0.19vh #7E7070, 0.19vh -0.19vh #7E7070, -0.19vh 0.19vh #7E7070;
-	margin-top: -2.2vh;
-
+	text-shadow: 2px 0 #7E7070, -2px 0 #7E7070, 0 2px #7E7070, 0 -2px #7E7070,
+            2px 2px #7E7070, -2px -2px #7E7070, 2px -2px #7E7070, -2px 2px #7E7070;
+	margin-top: -23px;
 }
 .titleImage {
 	position: relative;
-	width: 17.1vh;
-	height: 9.2vh;
+	width: 176px;
+	height: 95px;
+}
+
+
+.backgroundSetRow {
+	margin-top: 98px;
+}
+
+.player1 {
+	flex-grow: 1;
+	margin-right: 212px;
+}
+.player1Text {
+	font-size: 65px;
+	font-weight: 400;
+	text-align: center;
+	height: 87px;
+}
+.player1Image {
+	margin-top: 13px;
+	width: 251px;
+	height: 341px;
+}
+.player1Win {
+	margin-top: 25px;		/*CHIEDERE PERCHE VA PIU SOTTO E SEMBRA CHE SI MODIFICHI IL DESIGN*/
+	font-size: 60px;
+	text-align: center;
+}
+
+.trisTable {
+	flex-grow: 2;		/*CHIEDERE PERCHE NON FUNZIONA IL FLEX GROW, E DEVO METTERE PER FORZA IL MARGIN*/
+	/*margin-top: 70px;		CHIEDERE PERCHE CON IL MARGIN SI ABBASSA. QUINDI SE VA MESSO O NO*/	
+	height: 360px;
+	width: 360px;
+	top: 0;
+	position: relative;
+}
+/*.trisTable::before{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url("../images/ScrittaMarvel1.png");
+}
+
+.trisTable::after{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url("../images/ragnatelaProva.png");
+}*/
+.pitchDivContainer {
+	flex-wrap: wrap;
+	width: 100%;
+	top: 0;
+	position: absolute; 	CHIEDERE SE HA SENSO METTERE QUI POSITION ABSOLUTE E TOP 0 OPPURE SOPRA AL SUO CONTAINER
+}
+.pitchSquare {
+	flex-grow: 1;
+	width: 120px;
+	height: 120px;
+	border-right: 3px solid	black;
+	border-bottom: 3px solid black;
+	transition: 0.5s all ease-in-out; CHIEDERE PERCHE QUANDO SI CAMBIA RISOLUZIONE, CON QUESTO FA IL MATTO	
+}
+.pitchSquare:hover {
+	transition: 0.5s all ease-in-out;
+	box-shadow: inset 5px 5px 15px 2px rgba(220,0,0,0.15);
+}
+.noBorder-r {
+	border-right: 0;
+}
+.noBorder-b {
+	border-bottom: 0;
+}
+
+.player2 {
+	flex-grow: 1;
+	margin-left: 145px;
+}
+.player2Text {
+	font-size: 65px;
+	font-weight: 400;
+	text-align: center;
+	height: 75px;
+}
+.player2Image {	
+	width: 251px;
+	height: 360px;			/*CHIEDERE PERCHE SOLO AUMENTANDO L'ALTEZZA VIENE SIMILE*/
+	margin-top: 5px;
+}
+.player2Win {
+	margin-top: 25px;
+	font-size: 60px;
+	text-align: center;
+}
+
+
+.player1Life {
+	flex-grow: 1;
+	margin-right: 209px;
+	margin-top: -100px;
+}
+.player1LifeImage {
+	height: 58px;
+	width: 63px;
+}
+
+.restartButton {
+	flex-grow: 2;
+}
+.btnLink {
+	text-decoration: none; 
+}
+.restartButtonImage {
+	height: 175px;
+	width: 128px;	
+	rotate: ;	
+	transform: rotate(45deg);
+}
+.restartButtonText {
+	font-size: 45px;
+	font-weight: 400;
+	line-height: 90px;
+	letter-spacing: 0em;
+	text-align: center;
+	margin-top: -20px;
+	background: radial-gradient(141.77% 1228.84% at 129.22% 71.12%, #A610DB 23.89%, #1D31E7 39.6%, #00F736 51.09%, #F1E922 65.3%, #F1890F 76.18%, #E71D1D 86.46%, rgba(231, 29, 29, 0.1) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			text-fill-color: transparent;
+}
+
+.player2Life {
+	flex-grow: 1;
+	margin-left: 153px;
+	margin-top: -100px;
+}
+.player2LifeImage {
+	height: 78px;
+	width: 84px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.trisTable {
+	height: 35.15vh;
+	width: 35.15vh;
+	margin-top: 16.4vh;
+	position: relative;
 }
 
 
 .trisTable {
-	height: 35.15vh;
-	width: 35.15vh;
-	margin-top: 16.4vh;
+	height: 360px;
+	width: 360px;
+	top: 0;
+	position: relative;
 }
 
 .pitchDivContainer {
 	flex-wrap: wrap;
 	width: 100%;
-	position: relative;
-	top: -62.3vh;
-	/*transform: translateY(-655px); DA VEDERE QUESTA COSA DEL MOVIMENTO
-	transform: translateY(-63.9vh); CONTROLLARE ANCHE QUESTA*/
+	position: absolute;
 }
 .pitchSquare {
 	flex-grow: 1;
@@ -70,7 +262,28 @@
 	height: 11.7vh;
 	border-right: 3px solid	black;
 	border-bottom: 3px solid black;
-	/*transition: 0.5s all ease-in-out; CHIEDERE PERCHE QUANDO SI CAMBIA RISOLUZIONE, CON QUESTO FA IL MATTO*/
+	transition: 0.5s all ease-in-out; CHIEDERE PERCHE QUANDO SI CAMBIA RISOLUZIONE, CON QUESTO FA IL MATTO	
+}
+.pitchSquare:hover {
+	transition: 0.5s all ease-in-out;
+	box-shadow: inset 5px 5px 15px 2px rgba(220,0,0,0.15);
+}
+
+.pitchDivContainer {
+	flex-wrap: wrap;
+	width: 100%;
+	position: relative;
+}
+
+
+
+.pitchSquare {
+	flex-grow: 1;
+	width: 33.3%;
+	height: 11.7vh;
+	border-right: 3px solid	black;
+	border-bottom: 3px solid black;
+	/*transition: 0.5s all ease-in-out; CHIEDERE PERCHE QUANDO SI CAMBIA RISOLUZIONE, CON QUESTO FA IL MATTO
 }
 .pitchSquare:hover {
 	transition: 0.5s all ease-in-out;
@@ -78,12 +291,7 @@
 ;
 }
 
-.noBorder-r {
-	border-right: 0;
-}
-.noBorder-b {
-	border-bottom: 0;
-}
+
 
 .trisLogo {
 	width: 35.15vh;
@@ -92,6 +300,6 @@
 .trisString {
 	width: 35.15vh;
 	position: relative;
-	/*transform: translateY(-78%); CAPIRE BENE QUESTA COSA DEL -78%. BISOGNA CAPIRE DA DOVE ESCE IL 78%*/
-	top: -78%; /*PERCHE SE QUA METTO LA PERCENTUALE VA, MA INVECE SOPRA NO??????? CHIEDERE*/
-}
+	/*transform: translateY(-78%); CAPIRE BENE QUESTA COSA DEL -78%. BISOGNA CAPIRE DA DOVE ESCE IL 78%
+	top: -78%; PERCHE SE QUA METTO LA PERCENTUALE VA, MA INVECE SOPRA NO??????? CHIEDERE
+}*/
