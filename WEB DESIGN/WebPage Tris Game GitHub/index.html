@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title>Marvel Tris Game</title>
 	<link rel="stylesheet" type="text/css" href="static/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 <body>
 	<div class="mainContainer flex flexColumn">
@@ -15,38 +16,43 @@
 		<div class="backgroundSetRow flex flexRow">
 			<div class="player1 flex flexColumn">
 				<h2 class="player1Text fontIronMan">IRON MAN</h2>
-				<img src="static/images/ironman1.png" class="player1Image">
+				<img src="static/images/ironman1.png" class="player1Image playerImages">
 				<h3 class="player1Win fontIronMan">0</h3>
 			</div>
 
-			<div class="trisTable">
-				<div class="pitchDivContainer flex">
-					<a href="#" class="pitchSquare" data-stato="null"></a>
-					<a href="#" class="pitchSquare" data-stato="null"></a>
-					<a href="#" class="pitchSquare noBorder-r" data-stato="null"></a>
-					<a href="#" class="pitchSquare" data-stato="null"></a>
-					<a href="#" class="pitchSquare" data-stato="null"></a>
-					<a href="#" class="pitchSquare noBorder-r" data-stato="null"></a>
-					<a href="#" class="pitchSquare noBorder-b" data-stato="null"></a>
-					<a href="#" class="pitchSquare noBorder-b" data-stato="null"></a>
-					<a href="#" class="pitchSquare noBorder-r noBorder-b" data-stato="null"></a>
+			<div class="trisTable flex">
+				<div class="pitchDivContainer flex flexColumn">
+					<div class="flex flexRow">
+						<a href="#" class="pitchSquare" data-stato="null"></a>
+						<a href="#" class="pitchSquare" data-stato="null"></a>
+						<a href="#" class="pitchSquare noBorder-r" data-stato="null"></a>
+					</div>
+					<div class="flex flexRow">
+						<a href="#" class="pitchSquare" data-stato="null"></a>
+						<a href="#" class="pitchSquare" data-stato="null"></a>
+						<a href="#" class="pitchSquare noBorder-r" data-stato="null"></a>
+					</div>
+					<div class="flex flexRow">
+						<a href="#" class="pitchSquare noBorder-b" data-stato="null"></a>
+						<a href="#" class="pitchSquare noBorder-b" data-stato="null"></a>
+						<a href="#" class="pitchSquare noBorder-r noBorder-b" data-stato="null"></a>
+					</div>
 				</div>
 			</div>
 
 			<div class="player2 flex flexColumn">
 				<h2 class="player2Text fontThanos">THANOS</h2>
-				<img src="static/images/thanos4.png" class="player2Image">
+				<img src="static/images/thanos4.png" class="player2Image playerImages">
 				<h3 class="player2Win fontThanos">0</h3>
 			</div>
 		</div>
 
 		<div class="finalRow flex flexRow">
 			<div class="player1Life flex flexRow">
-				<img src="static/images/reattoreArc.png" class="player1LifeImage">
-				<img src="static/images/reattoreArc.png" class="player1LifeImage">	
-				<img src="static/images/reattoreArc.png" class="player1LifeImage">	
-				<img src="static/images/reattoreArc.png" class="player1LifeImage">	
-				<img src="static/images/reattoreArc.png" class="player1LifeImage">	
+				<img src="static/images/reattoreArc.png" class="player1LifeImage functionRemoveMove" data-move="0">
+				<img src="static/images/reattoreArc.png" class="player1LifeImage functionRemoveMove" data-move="0">	
+				<img src="static/images/reattoreArc.png" class="player1LifeImage functionRemoveMove" data-move="0">	
+				<img src="static/images/reattoreArc.png" class="player1LifeImage functionRemoveMove" data-move="0">	
 			</div>
 
 
@@ -58,11 +64,10 @@
 			</div>
 
 			<div class="player2Life flex flexRow">
-				<img src="static/images/thanosFace.png" class="player2LifeImage">
-				<img src="static/images/thanosFace.png" class="player2LifeImage">	
-				<img src="static/images/thanosFace.png" class="player2LifeImage">	
-				<img src="static/images/thanosFace.png" class="player2LifeImage">	
-				<img src="static/images/thanosFace.png" class="player2LifeImage">	
+				<img src="static/images/thanosFace-trimmy.png" class="player2LifeImage functionRemoveMove" data-move="0">
+				<img src="static/images/thanosFace-trimmy.png" class="player2LifeImage functionRemoveMove" data-move="0">	
+				<img src="static/images/thanosFace-trimmy.png" class="player2LifeImage functionRemoveMove" data-move="0">	
+				<img src="static/images/thanosFace-trimmy.png" class="player2LifeImage functionRemoveMove" data-move="0">
 			</div>
 		</div>
 	</div>
