@@ -1,23 +1,21 @@
-/*FINIRE FUNZIONE WIN AND DRAW. 
-FARE DESIGN PAGINA HOME DI SCELTA PERSONAGGIO E BACKGROUND
-FINIRE ANCHE BACKGROUND TRIS TABLE (90%)---> DA CAPIRE SE VA TENUTO IL REATTORE DI BACKGROUND
-FINIRE INDICATORE PERSONAGGIO CHE INIZIA (80%) ---> AGGIUSTARE NUMERO DI VOLTE CHE SI RIPETE, E QUANDO L'AVVERSARIO 
-											  FA LA MOSSA, BLOCCARE L'ANIMAZIONE. DA VEDERE COL PROF
-*/
-
-
 let link = document.querySelectorAll(".pitchSquare")
 let restart = document.querySelector(".btnRestart")
 let resetWinBtn = document.querySelector(".btnResetWin")
 
-
-let currentPlayer = "null"
-currentPlayer = startPlayer()
+let grid = [
+	[null, null, null], 
+	[null, null, null], 
+	[null, null, null]
+]
 
 let playerLifeRemove
 
 let player1Wins = 0
 let player2Wins = 0
+
+
+let userPlayer = "O"
+let currentPlayer = start()
 
 
 
@@ -28,36 +26,16 @@ for (let i = 0; i < link.length; i++) {
 		
 		let win = false
 		let draw = false
-		let casella = e.currentTarget
+		let casella = e.currentTarget,
+			row = parseInt(e.currentTarget.dataset.row),
+			col = parseInt(e.currentTarget.dataset.col)
 
-		if (casella.dataset.stato === "null") {
-			if (currentPlayer === "O") {
+
+		if (grid[row][col] === null) {
+			if (currentPlayer === userPlayer) {
 				casella.classList.add("player1Play")
 
-				casella.dataset.stato = currentPlayer
-				removeMove(currentPlayer)
-
-				win = checkWinner(currentPlayer)
-				if (win === true) {
-					//win() 		SVILUPPARE FUNZIONE PER DARE LA VITTORIA
-
-					winUpdate()
-					restartCleaning()
-				} else {
-					draw = fullCellsCheck()
-
-					if (draw === true) {
-						//draw		SVILUPPARE FUNZIONE PER DARE IL PAREGGIO
-						restartCleaning()
-					} else {
-						currentPlayer = "X"
-
-					}
-				}
-			} else {
-				casella.classList.add("player2Play")
-
-				casella.dataset.stato = currentPlayer
+				grid[row][col] = currentPlayer
 				removeMove(currentPlayer)
 
 				win = checkWinner(currentPlayer)
@@ -73,11 +51,21 @@ for (let i = 0; i < link.length; i++) {
 						//draw		SVILUPPARE FUNZIONE PER DARE IL PAREGGIO
 						restartCleaning()
 					} else {
-						currentPlayer = "O"
+						currentPlayer = "X"
 					}
 				}
+				animationPlayer(currentPlayer)		
 			} 
-			animationPlayer(currentPlayer)
+			
+			setRandomMove(grid)
+
+			casella.classList.add("player2Play")
+
+			grid[row][col] = currentPlayer
+			removeMove(currentPlayer)
+			
+
+			
 		}
 	})
 }
@@ -87,56 +75,39 @@ restart.addEventListener("click", function(e) {			//CHIEDERE IL PERCHE, SE METTO
 	restartCleaning()
 })
 
-resetWinBtn.addEventListener("click", function(e) {
-	e.preventDefault()
-
-	resetPlayersWin()
-})
-
-
 
 //FUNZIONI
 
+function setRandomMove(grid) {
+	let emptyCells = getEmptyCells(grid)
 
-function resetPlayersWin() {
-	let playerWin = document.querySelectorAll(".functionPlayerWin")
-
-	for (let i = 0; i < playerWin.length; i++) {
-		playerWin[i].innerHTML = "0"
-	}
-} 
-
-function restartCleaning() {
-	for (let i = 0; i < link.length; i++) {
-		if (link[i].dataset.stato === "O") {
-			link[i].classList.remove("player1Play")
-		} else {
-			link[i].classList.remove("player2Play")
-		}
-		
-		link[i].dataset.stato = "null"
-	}
-
-	playerLifeRemove = document.querySelectorAll(".functionRemoveMove")
-
-	for (let i = 0; i < playerLifeRemove.length; i++) {
-		playerLifeRemove[i].classList.remove("removeMove")
-
-		playerLifeRemove[i].dataset.move = "0"
-	}	
-
-	currentPlayer = "null"
-	startPlayer()
+	//Math.floor(Math.random() * (emptyCells.length - 1) +)
 }
 
 
-function startPlayer() {
+function getEmptyCells(grid) {
+	let emptyCells = []
+	let b = 0
+
+	for (let i = 0; i < grid.length; i++) {
+		for (let j = 0; j < grid.length; j++) {
+			if (grid[i][j] === null) {
+				emptyCells.push(`${i} ${j}`)
+			}
+		}
+	}
+
+	return emptyCells
+}
+
+
+function start() {
 	let r = Math.floor(Math.random() *2)
 
 	if (r === 0) {		//PLAYER 1(IRONMAN) = O, PLAYER 2(THANOS) = X
-		currentPlayer = "O"
+		currentPlayer = userPlayer
 	} else {
-		currentPlayer = "X"		
+		currentPlayer = "X"	
 	}
 	animationPlayer(currentPlayer)
 
@@ -155,7 +126,7 @@ const animateCSS = (element = '.playerImages', animation = 'pulse', prefix = 'an
 
     const currentPlayerAnimation = document.querySelectorAll(element);
 
-    if (currentPlayer === "O") {
+    if (currentPlayer === userPlayer) {
     	i = 0
     } else if (currentPlayer === "X") {
     	i = 1
@@ -171,23 +142,10 @@ const animateCSS = (element = '.playerImages', animation = 'pulse', prefix = 'an
     
     currentPlayerAnimation[i].addEventListener('animationend', handleAnimationEnd, {once: true});
   });
-
-
-
-
-
-
-
-	/*if (currentPlayer === "O") {
-		currentPlayer1.classList.add("currentPlayer")
-
-		currentPlayer2.classList.remove("currentPlayer")
-	} else if (currentPlayer === "X") {
-		currentPlayer2.classList.add("currentPlayer")
-
-		currentPlayer1.classList.remove("currentPlayer")
-	}*/
 }
+
+
+
 
 
 function removeMove(currentPlayer) {
@@ -276,3 +234,31 @@ function checkWinner(currentPlayer) {
 		return false
 	} 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*function humanPlayerChoice() {
+	let humanPlayerChoice = 
+}*/
+
+
+
+
+
+
+
+

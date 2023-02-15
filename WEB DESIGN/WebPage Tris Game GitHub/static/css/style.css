@@ -1,4 +1,7 @@
-/*FARE RISOLUZIONE PER TELEFONO E PC*/
+/*FARE RISOLUZIONE PER TELEFONO E PC --> PC (FLESSIBILE, H: 800) E TELEFONO (IPHONE SE)
+CAMBIO SFONDO
+MENU PRINICPALI
+RESETTA VITTORIE*/
 
 * {
 	box-sizing: border-box;
@@ -44,6 +47,9 @@
 	flex-direction: row;
 }
 
+.btnLink {
+	text-decoration: none; 
+}
 
 
 .mainContainer {
@@ -89,7 +95,7 @@
 	height: 341px;
 }
 .player1Win {
-	margin-top: 25px;		/*CHIEDERE PERCHE VA PIU SOTTO E SEMBRA CHE SI MODIFICHI IL DESIGN*/
+	margin-top: 25px;		
 	font-size: 60px;
 	text-align: center;
 }
@@ -100,23 +106,11 @@
 	width: 360px;
 	top: 0;
 	position: relative;
-	z-index: 100;
+	z-index: 10;
 	background-size: 53%;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-image: url("../images/ScrittaMarvel1.png");
-}
-.pitchDivContainer::before{
-	content: "";
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 1;
-    width: 100%;
-	height: 100%;
-	background-size: cover;
-	background-image: url("../images/reattoreArcProva.png"); 		/*CAPIRE SE LA RAGNATELA LA DEVO LASCIARE O NO*/
 }
 .pitchDivContainer {
 	flex-wrap: nowrap;
@@ -161,7 +155,7 @@
 }
 .player2Image {	
 	width: 251px;
-	height: 360px;			/*CHIEDERE PERCHE SOLO AUMENTANDO L'ALTEZZA VIENE SIMILE*/
+	height: 360px;			
 	margin-top: 5px;
 }
 .player2Win {
@@ -175,10 +169,11 @@
 	width: 100%;
 }
 
-.player1Life {
+.leftContainer {
 	flex-basis: 25%;
-	top: -50px;
 	position: relative;
+}
+.player1Life {
 	justify-content: center;
 }
 .player1LifeImage {
@@ -188,9 +183,6 @@
 
 .restartButton {
 	flex-grow: 1;
-}
-.btnLink {
-	text-decoration: none; 
 }
 .restartButtonImage {
 	height: 175px;
@@ -211,10 +203,11 @@
 			text-fill-color: transparent;
 }
 
-.player2Life {
+.rightContainer {
 	flex-basis: 25%;
-	top: -50px;
-	position: relative;
+	position: relative;			/*CHIEDERE A CHE SERVE QUI POSITION RELATIVE*/
+}
+.player2Life {
 	justify-content: center;
 }
 .player2LifeImage {
@@ -222,6 +215,52 @@
 	width: 63px;
 }
 
+
+.btnContainer {
+	width: 100%;
+    justify-content: center;
+}
+.btnFieldChange,
+.btnMenu,
+.btnResetWin {			
+	flex-basis: 50%;
+	margin-top: 65px;
+	justify-content: center;	
+}
+.btnContainer a:last-child {
+	margin-right: 0;
+}
+
+.btnFieldChangeImage, 
+.btnMenuImage,
+.btnResetWinImage {
+	width: 30px;
+}
+.btnFieldChangeText, 
+.btnMenuText,
+.btnResetWinText {
+	font-size: 15px;
+	text-align: center;
+}
+
+.btnMenuText {
+	background: #1428DB;
+	background: radial-gradient(circle farthest-side at left center, #1428DB 45%, #0F1D9E 70%, #0C1885 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.btnFieldChangeText {
+	background: #EB240E;
+	background: radial-gradient(circle farthest-side at left center, #EB240E 45%, #AB180E 70%, #B81210 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+}
+.btnResetWinText {
+	background: #EB8015;
+	background: radial-gradient(circle farthest-side at left center, #EB8015 45%, #BD6711 70%, #99530E 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+}
 
 
 .pitchSquare.player1Play {
@@ -249,9 +288,31 @@
 
 
 
+.modalOverlay{
+	position: fixed;
+	top: -100%;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transition: all 0.5s ease-in-out;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 10000;
+	background: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(10px);
+}
 
+.modalOverlay.open{
+	top: 0;
+}
 
-
+.modal{
+	width: 90%; /* mobile */
+	min-height: 90%;
+	background: #fff;
+	text-align: center;
+}
 
 
 

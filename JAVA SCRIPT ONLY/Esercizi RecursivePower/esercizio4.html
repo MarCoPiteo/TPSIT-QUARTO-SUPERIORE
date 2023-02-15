@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Esercizio 4</title>
+</head>
+<body>
+	<div class="outputArray" style="font-size: 25px;"></div>
+	<div class="finalOutput" style="font-size: 25px;"></div>
+
+	<script type="text/javascript">
+		let array = [23, 32, 12, 45, 3, 17, 26, 10, 20, 1]
+
+		let max = -Infinity
+
+		function recursiveMax(array, max) {
+			if (array.length === 0) {
+				return max
+			} else {
+				if (array[0] > max) {
+					max = array[0]
+				}
+				array = array.slice(1)
+
+				return recursiveMax(array, max)
+			}
+		}
+
+		outputArray = document.querySelector(".outputArray")
+		outputArray.innerHTML = `Elementi Array: ${array}`
+
+		finalOutput = document.querySelector(".finalOutput")
+		finalOutput.innerHTML = `Valore Max: ${recursiveMax(array, max)}`
+	</script>
+</body>
+</html>

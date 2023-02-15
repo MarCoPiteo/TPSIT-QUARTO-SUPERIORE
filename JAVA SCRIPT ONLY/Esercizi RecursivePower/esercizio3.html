@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Esercizio 3</title>
+</head>
+<body>
+	<div class="outputArray" style="font-size: 25px;"></div>
+	<div class="finalOutput" style="font-size: 25px;"></div>
+
+	<script type="text/javascript">
+		let array = [23, 32, 12, 45, 3, -17, 26, 10, 20, 1]
+
+		let min = Infinity
+
+		function recursive(array, min) {
+			if (array.length === 0) {
+				return min
+			} else {
+				if (array[0] < min) {
+					min = array[0]
+				}
+				array = array.slice(1)
+				//array.pop()
+
+				return recursive(array, min)
+			}
+		}
+
+		outputArray = document.querySelector(".outputArray")
+		outputArray.innerHTML = `Elementi Array: ${array}`
+
+		finalOutput = document.querySelector(".finalOutput")
+		finalOutput.innerHTML = `Valore Min: ${recursive(array, min)}`
+	</script>
+</body>
+</html>

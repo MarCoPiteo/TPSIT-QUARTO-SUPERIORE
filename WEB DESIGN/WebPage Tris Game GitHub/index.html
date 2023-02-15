@@ -7,6 +7,9 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 <body>
+	<!--<div class="modalOverlay open">
+		<div class="modal">Contenuto della modale</div>
+	</div>-->
 	<div class="mainContainer flex flexColumn">
 		<div class="titleRow flex flexColumn"> <!--CHIEDERE SE SERVE METTERE FLEX COLUMN A QUESTO DIV-->
 			<img src="static/images/ScrittaMarvel.png" class="titleImage">
@@ -17,25 +20,61 @@
 			<div class="player1 flex flexColumn">
 				<h2 class="player1Text fontIronMan">IRON MAN</h2>
 				<img src="static/images/ironman1.png" class="player1Image playerImages">
-				<h3 class="player1Win fontIronMan">0</h3>
+				<h3 class="player1Win fontIronMan functionPlayerWin">0</h3>
 			</div>
 
 			<div class="trisTable flex">
 				<div class="pitchDivContainer flex flexColumn">
 					<div class="flex flexRow">
-						<a href="#" class="pitchSquare" data-stato="null"></a>
-						<a href="#" class="pitchSquare" data-stato="null"></a>
-						<a href="#" class="pitchSquare noBorder-r" data-stato="null"></a>
+						<a href="#" 
+							class="pitchSquare" 
+							data-stato="null" 
+							data-row="0"
+							data-col="0"></a>
+						<a href="#" 
+							class="pitchSquare" 
+							data-stato="null" 
+							data-row="0"
+							data-col="1"></a>
+						<a href="#" 
+							class="pitchSquare noBorder-r" 
+							data-stato="null"
+							data-row="0"
+							data-col="2"></a>
 					</div>
 					<div class="flex flexRow">
-						<a href="#" class="pitchSquare" data-stato="null"></a>
-						<a href="#" class="pitchSquare" data-stato="null"></a>
-						<a href="#" class="pitchSquare noBorder-r" data-stato="null"></a>
+						<a href="#" 
+							class="pitchSquare" 
+							data-stato="null"
+							data-row="1"
+							data-col="0"></a>
+						<a href="#" 
+							class="pitchSquare" 
+							data-stato="null"
+							data-row="1"
+							data-col="1"></a>
+						<a href="#" 
+							class="pitchSquare noBorder-r" 
+							data-stato="null"
+							data-row="1"
+							data-col="2"></a>
 					</div>
 					<div class="flex flexRow">
-						<a href="#" class="pitchSquare noBorder-b" data-stato="null"></a>
-						<a href="#" class="pitchSquare noBorder-b" data-stato="null"></a>
-						<a href="#" class="pitchSquare noBorder-r noBorder-b" data-stato="null"></a>
+						<a href="#" 
+							class="pitchSquare noBorder-b" 
+							data-stato="null"
+							data-row="2"
+							data-col="0"></a>
+						<a href="#" 
+							class="pitchSquare noBorder-b" 
+							data-stato="null"
+							data-row="2"
+							data-col="1"></a>
+						<a href="#" 
+							class="pitchSquare noBorder-r noBorder-b" 
+							data-stato="null"
+							data-row="2"
+							data-col="2"></a>
 					</div>
 				</div>
 			</div>
@@ -43,36 +82,56 @@
 			<div class="player2 flex flexColumn">
 				<h2 class="player2Text fontThanos">THANOS</h2>
 				<img src="static/images/thanos4.png" class="player2Image playerImages">
-				<h3 class="player2Win fontThanos">0</h3>
+				<h3 class="player2Win fontThanos functionPlayerWin">0</h3>
 			</div>
 		</div>
 
 		<div class="finalRow flex flexRow">
-			<div class="player1Life flex flexRow">
-				<img src="static/images/reattoreArc.png" class="player1LifeImage functionRemoveMove" data-move="0">
-				<img src="static/images/reattoreArc.png" class="player1LifeImage functionRemoveMove" data-move="0">	
-				<img src="static/images/reattoreArc.png" class="player1LifeImage functionRemoveMove" data-move="0">	
-				<img src="static/images/reattoreArc.png" class="player1LifeImage functionRemoveMove" data-move="0">	
+			<div class="leftContainer flex flexColumn">
+				<div class="player1Life flex flexRow">
+					<img src="static/images/reattoreArc.png" class="player1LifeImage functionRemoveMove" data-move="0">
+					<img src="static/images/reattoreArc.png" class="player1LifeImage functionRemoveMove" data-move="0">	
+					<img src="static/images/reattoreArc.png" class="player1LifeImage functionRemoveMove" data-move="0">	
+					<img src="static/images/reattoreArc.png" class="player1LifeImage functionRemoveMove" data-move="0">	
+				</div>
+
+				<div class="btnContainer flex flexRow">
+					<a href="#" class="btnLink flex flexColumn btnFieldChange">
+						<img src="static/images/gemma-rossa.png" class="btnFieldChangeImage">
+						<h2 class="btnFieldChangeText btnLink fontAvengero">Change Field</h2>
+					</a>
+					<a href="#" class="btnLink flex flexColumn btnMenu">
+						<img src="static/images/gemma-blu.png" class="btnMenuImage">
+						<h2 class="btnMenuText btnLink fontAvengero">Back To Menu</h2>
+					</a>
+				</div>
 			</div>
 
-
 			<div class="restartButton">
-				<a href="#" class="btnLink flex flexColumn">
+				<a href="#" class="btnLink btnRestart flex flexColumn">
 					<img src="static/images/infinityGauntlet.png" class="restartButtonImage">
 					<h2 class="restartButtonText fontAvengero">Restart</h2>
 				</a>
 			</div>
 
-			<div class="player2Life flex flexRow">
-				<img src="static/images/thanosFace-trimmy.png" class="player2LifeImage functionRemoveMove" data-move="0">
-				<img src="static/images/thanosFace-trimmy.png" class="player2LifeImage functionRemoveMove" data-move="0">	
-				<img src="static/images/thanosFace-trimmy.png" class="player2LifeImage functionRemoveMove" data-move="0">	
-				<img src="static/images/thanosFace-trimmy.png" class="player2LifeImage functionRemoveMove" data-move="0">
+			<div class="rightContainer flex flexColumn">
+				<div class="player2Life flex flexRow">
+					<img src="static/images/thanosFace.png" class="player2LifeImage functionRemoveMove" data-move="0">
+					<img src="static/images/thanosFace.png" class="player2LifeImage functionRemoveMove" data-move="0">	
+					<img src="static/images/thanosFace.png" class="player2LifeImage functionRemoveMove" data-move="0">	
+					<img src="static/images/thanosFace.png" class="player2LifeImage functionRemoveMove" data-move="0">
+				</div>
+				<div>
+					<a href="#" class="btnLink flex flexColumn btnResetWin">
+						<img src="static/images/gemma-arancio.png" class="btnResetWinImage">
+						<h2 class="btnResetWinText btnLink fontAvengero">Reset Win</h2>
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<!--<script type="text/javascript" src="../../p5/p5.min.js"></script>-->
-	<script type="text/javascript" src="static/js/javascript.js"></script>
+	<script type="text/javascript" src="static/js/robot-JS.js"></script>
+	<!--<script type="text/javascript" src="static/js/javascript.js"></script>-->
 </body>
 </html>

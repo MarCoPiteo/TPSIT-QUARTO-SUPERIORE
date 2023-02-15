@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Esercizio 5</title>
+</head>
+<body>
+	<!--<form id="myForm">
+		<input type="text" name="user_word" id="user_word" placeholder="Inserisci la parola da verificare">
+		<button type="submit">Clicca qui per verificare la parola</button>
+	</form>-->
+	<div class="finalOutput" style="font-size: 25px;"></div>
+
+	<script type="text/javascript">
+		/*let form = document.querySelector("#myForm")
+
+		form.addEventListener("submit", function(e) {
+			e.preventDefault()*/
+		//}) 
+
+		/*let word_user = document.querySelector("#user_word")
+	
+		let word = word_user.value
+		word = word.toString()
+		let length = word.length*/
+
+		let word = prompt("Inserisci la parola da verificare")
+		word = word.toString()
+
+		let lengthCheck = 0
+		let length = word.length
+
+		function recursiveMax(word, length, lengthCheck) {
+			if (lengthCheck >= length/2) {
+			    return 'It is a palindrome word';
+			} else {
+				if (word[lengthCheck] !== word[length - 1 - lengthCheck]) {
+			    	return "It isn't a palindrome word"
+			    } else {
+					lengthCheck += 1
+
+					return recursiveMax(word, length-1, lengthCheck+1)
+
+			    }
+
+			}
+		}
+
+		let finalOutput = document.querySelector(".finalOutput")
+		finalOutput.innerHTML = recursiveMax(word, length, lengthCheck)
+	</script>
+</body>
+</html>

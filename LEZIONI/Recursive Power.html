@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Recursive Power</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		function recursivePower(b, e) {
+			if (e === 0) {
+				return 1
+			} else {
+				return b * recursivePower(b, e-1)
+			}
+		}
+
+		/*function iterativePower(b, e) {
+			let risultato = 1
+
+			for (let i = 0; i < e; i++) {
+				risultato = risultato*b
+			}
+
+			return risultato
+		}*/
+
+		console.log(recursivePower(10, 3))
+		/*console.log(iterativePower(10, 3))*/
+	</script>
+</body>
+</html>
