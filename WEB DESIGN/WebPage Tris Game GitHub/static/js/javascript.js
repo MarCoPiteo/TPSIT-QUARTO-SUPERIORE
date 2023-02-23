@@ -171,22 +171,6 @@ const animateCSS = (element = '.playerImages', animation = 'pulse', prefix = 'an
     
     currentPlayerAnimation[i].addEventListener('animationend', handleAnimationEnd, {once: true});
   });
-
-
-
-
-
-
-
-	/*if (currentPlayer === "O") {
-		currentPlayer1.classList.add("currentPlayer")
-
-		currentPlayer2.classList.remove("currentPlayer")
-	} else if (currentPlayer === "X") {
-		currentPlayer2.classList.add("currentPlayer")
-
-		currentPlayer1.classList.remove("currentPlayer")
-	}*/
 }
 
 

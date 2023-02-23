@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Conversione Decimale-Binario</title>
+</head>
+<body>
+	<form id="myForm">
+		<input type="text" name="user_number" id="user_number" placeholder="Inserisci il numero da convertire in binario">
+		<button class="user_button">Converti in binario</button>
+	</form>
+	<div class="finalOutput" style="font-size: 25px;"></div>
+
+	<script type="text/javascript">
+		let onClickButton = document.querySelector(".user_button")
+
+		onClickButton.addEventListener("click", function(e) {
+			e.preventDefault()
+
+		  	let user_input = document.getElementById("user_number").value;
+		  	let binary = "";
+
+		  	function conversione(n) {
+		    	if (n == 0) {
+			    	return binary;
+			    } else {
+			      	binary = (n % 2) + binary;
+			      	return conversione((n - (n % 2)) / 2);
+			    }
+		  	}
+
+			let finalOutput = document.querySelector(".finalOutput")
+			finalOutput.innerHTML = `Il numero binario è: ${conversione(user_input)}`;	
+		})
+		
+	</script>
+</body>
+</html>
