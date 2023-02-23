@@ -19,14 +19,15 @@
 			e.preventDefault()
 
 		  	let user_input = document.getElementById("user_number").value;
-		  	let binary = "";
 
 		  	function conversione(n) {
+		  		let binary = "";
+		    	
 		    	if (n == 0) {
-			    	return binary;
+			    	return ''
 			    } else {
-			      	binary = (n % 2) + binary;
-			      	return conversione((n - (n % 2)) / 2);
+			    	let r = n%2
+			      	return conversione((n - r) / 2 )+ r.toString()
 			    }
 		  	}
 
