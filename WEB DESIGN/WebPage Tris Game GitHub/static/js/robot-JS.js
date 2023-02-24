@@ -13,8 +13,11 @@ let grid = [
 
 let playerLifeRemove
 
+
 let player1Wins = 0
 let player2Wins = 0
+
+let flgUserMove = true
 
 
 let userPlayer = start()
@@ -36,71 +39,79 @@ for (let i = 0; i < link.length; i++) {
 			col = parseInt(e.currentTarget.dataset.col)
 		let resultMatch = null	
 
-
-		if (grid[row][col] === null) {
-			if (userPlayer === "O") {
-				casella.classList.add("player1Play")
-			} else {
-				casella.classList.add("player2Play")
-			}
-			grid[row][col] = currentPlayer
-
-
-//CHECK RISULTATO//
-			resultMatch = resultMatchCheck(currentPlayer)
-
-			if (resultMatch === "win") {
-				setTimeout(function() {
-					winUpdate()
-					restartCleaning()
-				}, 1000)
-			} else if (resultMatch === "draw") {
-				setTimeout(function() {
-					restartCleaning()
-				}, 500)
-			} else if (resultMatch === null) {
-				removeMove(currentPlayer)
+		//if (flgAnimationStop)		DA FARE
+		if (flgUserMove === true) {
+			if (grid[row][col] === null) {
 				if (userPlayer === "O") {
-					currentPlayer = "X"
+					casella.classList.add("player1Play")
 				} else {
-					currentPlayer = "O"
-				} 
-				animationPlayer(currentPlayer)
-
-
-
-				//COMPUTER MOVE//
-				setTimeout(function(){
-
-					let computerMove = getBestMove(grid)
-					grid[computerMove[0]][computerMove[1]] = currentPlayer
-
-					let computerCasella = document.querySelector(`.pitchSquare[data-row="${computerMove[0]}"][data-col="${computerMove[1]}"]`)
-
-					if (userPlayer === "O") {
-						computerCasella.classList.add("player2Play")
-					} else {
-						computerCasella.classList.add("player1Play")
-					}
-
-
-					resultMatch = resultMatchCheck(currentPlayer)
-
-					if (resultMatch === "win") {
-						setTimeout(function() {
+					casella.classList.add("player2Play")
+				}
+				grid[row][col] = currentPlayer
+	
+	
+	//CHECK RISULTATO//
+				resultMatch = resultMatchCheck(currentPlayer)
+	
+				if (resultMatch === "win") {
+					setTimeout(function() {
 						winUpdate()
 						restartCleaning()
 					}, 1000)
-					} else if (resultMatch === "draw") {
-						setTimeout(function() {
+				} else if (resultMatch === "draw") {
+					setTimeout(function() {
 						restartCleaning()
 					}, 500)
-					} else if (resultMatch === null) {
-						removeMove(currentPlayer)
-						currentPlayer = userPlayer
-						animationPlayer(currentPlayer)
-					}
-				}, 2000)
+				} else if (resultMatch === null) {
+					removeMove(currentPlayer)
+
+					if (userPlayer === "O") {
+						currentPlayer = "X"
+					} else {
+						currentPlayer = "O"
+					} 
+					flgUserMove = false
+
+					animationPlayer(currentPlayer)
+	
+	
+	
+					//COMPUTER MOVE//
+					setTimeout(function(){
+	
+						let computerMove = getBestMove(grid)
+						grid[computerMove[0]][computerMove[1]] = currentPlayer
+	
+						let computerCasella = document.querySelector(`.pitchSquare[data-row="${computerMove[0]}"][data-col="${computerMove[1]}"]`)
+	
+						if (userPlayer === "O") {
+							computerCasella.classList.add("player2Play")
+						} else {
+							computerCasella.classList.add("player1Play")
+						}
+	
+	
+						resultMatch = resultMatchCheck(currentPlayer)
+	
+						if (resultMatch === "win") {
+							setTimeout(function() {
+								winUpdate()
+								restartCleaning()
+							}, 1000)
+						} else if (resultMatch === "draw") {
+							setTimeout(function() {
+								restartCleaning()
+							}, 500)
+						} else if (resultMatch === null) {
+							removeMove(currentPlayer)
+
+							currentPlayer = userPlayer
+
+							animationPlayer(currentPlayer)
+						}
+						flgUserMove = true
+					}, 2000)
+				}
 			}
 		}
 	})
@@ -125,7 +136,7 @@ resetWinBtn.addEventListener("click", function(e) {
 function start() {
 	//PAGINA HOME PER INIZIO GIOCO
 
-	let userPlayer = "X"
+	let userPlayer = "O"
 
 	animationPlayer(userPlayer)
 
@@ -165,8 +176,8 @@ function getEmptyCells(grid) {
 
 
 function animationPlayer(currentPlayer) {
-const animateCSS = (element = '.playerImages', animation = 'pulse', prefix = 'animate__', 
-	duration = 'slow', repeating = 'repeat-1')
+	const animateCSS = (element = '.playerImages', animation = 'pulse', prefix = 'animate__', 
+		duration = 'slow', repeating = 'repeat-1')
 
   new Promise((resolve, reject) => {
 	let i = 0
