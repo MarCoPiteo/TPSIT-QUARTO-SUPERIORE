@@ -1,4 +1,4 @@
-//AGGIUSTARE IL FATTO CHE IL PLAYER UMANO POSSA GIOCARE PIU TURN DI SEGUITO
+//CHIEDERE A MASTRANDREA COME COLLEGARE DUE PAGINE JS
 
 
 let link = document.querySelectorAll(".pitchSquare")
@@ -12,7 +12,6 @@ let grid = [
 ]
 
 let playerLifeRemove
-
 
 let player1Wins = 0
 let player2Wins = 0
@@ -49,6 +48,7 @@ for (let i = 0; i < link.length; i++) {
 				}
 				grid[row][col] = currentPlayer
 	
+					removeMove(currentPlayer)
 	
 	//CHECK RISULTATO//
 				resultMatch = resultMatchCheck(currentPlayer)
@@ -63,8 +63,6 @@ for (let i = 0; i < link.length; i++) {
 						restartCleaning()
 					}, 500)
 				} else if (resultMatch === null) {
-					removeMove(currentPlayer)
-
 					if (userPlayer === "O") {
 						currentPlayer = "X"
 					} else {
@@ -78,7 +76,6 @@ for (let i = 0; i < link.length; i++) {
 	
 					//COMPUTER MOVE//
 					setTimeout(function(){
-	
 						let computerMove = getBestMove(grid)
 						grid[computerMove[0]][computerMove[1]] = currentPlayer
 	
@@ -241,21 +238,7 @@ function winUpdate() {
 	}
 }
 
-function fullCellsCheck(grid) {
-	let fullCells = 0
 
-	for (let i = 0; i < grid.length; i++) {
-		for (let j = 0; j < grid.length; j++) {
-			if (grid[i][j] != null) {
-				fullCells += 1
-			}
-
-			if (fullCells >= 8) {
-				return true
-			}
-		}
-	}
-}
 
 function checkWinner(currentPlayer, grid) {
 	if (grid[0][0] === currentPlayer && grid[1][0] === currentPlayer && 
@@ -310,6 +293,23 @@ function resultMatchCheck(currentPlayer) {
 		}
 	}
 	return result
+}
+
+
+function fullCellsCheck(grid) {
+	let fullCells = 0
+
+	for (let i = 0; i < grid.length; i++) {
+		for (let j = 0; j < grid.length; j++) {
+			if (grid[i][j] != null) {
+				fullCells += 1
+			}
+
+			if (fullCells >= 9) {
+				return true
+			}
+		}
+	}
 }
 
 

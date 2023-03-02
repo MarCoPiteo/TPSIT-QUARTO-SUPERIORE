@@ -11,14 +11,21 @@ let restart = document.querySelector(".btnRestart")
 let resetWinBtn = document.querySelector(".btnResetWin")
 
 
-let currentPlayer = "null"
-currentPlayer = startPlayer()
+let grid = [
+	[null, null, null], 
+	[null, null, null], 
+	[null, null, null]
+]
 
 let playerLifeRemove
 
 let player1Wins = 0
 let player2Wins = 0
+let flgUserMove = false
 
+
+let currentPlayer = "null"
+currentPlayer = startPlayer()
 
 
 for (let i = 0; i < link.length; i++) {
@@ -28,9 +35,50 @@ for (let i = 0; i < link.length; i++) {
 		
 		let win = false
 		let draw = false
-		let casella = e.currentTarget
+		let casella = e.currentTarget,
+			row = parseInt(e.currentTarget.dataset.row),
+			col = parseInt(e.currentTarget.dataset.col)
+		//SERVE A MINIMIZZARE LE RIGHE DI CODICE PER IL CONTROLLO RISULTATO 
+		let resultMatch = null			
 
-		if (casella.dataset.stato === "null") {
+
+		if (flgUserMove === true) {
+			if (grid[row][col] === null) {
+				if (currentPlayer === "O") {
+					casella.classList.add("player1Play")
+				} else {
+					casella.classList.add("player2Play")
+				}
+				grid[row][col] = currentPlayer
+				removeMove(currentPlayer)
+					
+	//CHECK RISULTATO//
+				resultMatch = resultMatchCheck(currentPlayer)
+						
+				if (resultMatch === "win") {
+					setTimeout(function() {
+						winUpdate()
+						restartCleaning()
+					}, 1000)
+				} else if (resultMatch === "draw") {
+					setTimeout(function() {
+						restartCleaning()
+					}, 500)
+				} else if (resultMatch === null) {
+					flgUserMove = false
+
+					if (currentPlayer === "O") {
+						currentPlayer = "X"
+					} else {
+						currentPlayer = "O"
+					} 
+					animationPlayer(currentPlayer)
+				}
+			}
+		}
+
+
+		/*if (casella.dataset.stato === "null") {
 			if (currentPlayer === "O") {
 				casella.classList.add("player1Play")
 
@@ -78,10 +126,10 @@ for (let i = 0; i < link.length; i++) {
 				}
 			} 
 			animationPlayer(currentPlayer)
-		}
+		}*/
 	})
 }
-restart.addEventListener("click", function(e) {			//CHIEDERE IL PERCHE, SE METTO L'EVENTLISTENER DEL RESTART, NEL FOR PRINCIPALE, VIENE MANDATO IN ESECUZIONE PIU VOLTE, SFASANDO L'ANIMAZIONE. FUORI DA QUEL FOR, INVECE NO.
+restart.addEventListener("click", function(e) {			
 	e.preventDefault()
 
 	restartCleaning()
@@ -95,40 +143,7 @@ resetWinBtn.addEventListener("click", function(e) {
 
 
 
-//FUNZIONI
-
-
-function resetPlayersWin() {
-	let playerWin = document.querySelectorAll(".functionPlayerWin")
-
-	for (let i = 0; i < playerWin.length; i++) {
-		playerWin[i].innerHTML = "0"
-	}
-} 
-
-function restartCleaning() {
-	for (let i = 0; i < link.length; i++) {
-		if (link[i].dataset.stato === "O") {
-			link[i].classList.remove("player1Play")
-		} else {
-			link[i].classList.remove("player2Play")
-		}
-		
-		link[i].dataset.stato = "null"
-	}
-
-	playerLifeRemove = document.querySelectorAll(".functionRemoveMove")
-
-	for (let i = 0; i < playerLifeRemove.length; i++) {
-		playerLifeRemove[i].classList.remove("removeMove")
-
-		playerLifeRemove[i].dataset.move = "0"
-	}	
-
-	currentPlayer = "null"
-	startPlayer()
-}
-
+//---------------FUNZIONI---------------//
 
 function startPlayer() {
 	let r = Math.floor(Math.random() *2)
@@ -143,9 +158,11 @@ function startPlayer() {
 	return currentPlayer
 }	
 
+//----------------------------------//
+
 function animationPlayer(currentPlayer) {
 const animateCSS = (element = '.playerImages', animation = 'pulse', prefix = 'animate__', 
-	duration = 'slow', repeating = 'repeat-2')
+	duration = 'slow', repeating = 'repeat-1')
 
   new Promise((resolve, reject) => {
 	let i = 0
@@ -167,10 +184,50 @@ const animateCSS = (element = '.playerImages', animation = 'pulse', prefix = 'an
 		event.stopPropagation();
 		currentPlayerAnimation[i].classList.remove(`${prefix}animated`, bounce, slower, repeat);
 		resolve('Animation ended');
+
+		setTimeout(function() {
+			flgUserMove = true
+		}, 250)
     }
     
     currentPlayerAnimation[i].addEventListener('animationend', handleAnimationEnd, {once: true});
   });
+}
+
+
+function restartCleaning() {
+	for (let i = 0; i < grid.length; i++) {
+		for (let j = 0; j < grid.length; j++) {
+			if (grid[i][j] === "O") {
+				let casellaCleaning = document.querySelector(`.pitchSquare[data-row="${i}"][data-col="${j}"]`)
+				casellaCleaning.classList.remove("player1Play")
+			} else if (grid[i][j] === "X") {
+				let casellaCleaning = document.querySelector(`.pitchSquare[data-row="${i}"][data-col="${j}"]`)
+				casellaCleaning.classList.remove("player2Play")
+			}
+			
+			grid[i][j] = null	
+		}	
+	}
+
+	playerLifeRemove = document.querySelectorAll(".functionRemoveMove")
+
+	for (let i = 0; i < playerLifeRemove.length; i++) {
+		playerLifeRemove[i].classList.remove("removeMove")
+
+		playerLifeRemove[i].dataset.move = "0"
+	}	
+
+	currentPlayer = startPlayer()
+}
+
+
+function resetPlayersWin() {
+	let playerWin = document.querySelectorAll(".functionPlayerWin")
+
+	for (let i = 0; i < playerWin.length; i++) {
+		playerWin[i].innerHTML = "0"
+	}
 }
 
 
@@ -208,55 +265,75 @@ function winUpdate() {
 	}
 }
 
-function fullCellsCheck() {
+//----------------------------------//
+
+function fullCellsCheck(grid) {
 	let fullCells = 0
 
-	for (let i = 0; i < link.length; i++) {
-		if (link[i].dataset.stato != "null") {
-			fullCells += 1
-		}
+	for (let i = 0; i < grid.length; i++) {
+		for (let j = 0; j < grid.length; j++) {
+			if (grid[i][j] != null) {
+				fullCells += 1
+			}
 
-		if (fullCells >= 8) {
-			return true
+			if (fullCells >= 9) {
+				return true
+			}
 		}
 	}
 }
 
 
-function checkWinner(currentPlayer) {
-	if (link[0].dataset.stato === currentPlayer && link[3].dataset.stato === currentPlayer && 
-		link[6].dataset.stato === currentPlayer) {		//COLONNA SINISTRA
-		return true
-	console.log("vittoria")
-	} else if (link[1].dataset.stato === currentPlayer && link[4].dataset.stato === currentPlayer && 
-		link[7].dataset.stato === currentPlayer) {		//COLONNA CENTRALE
+function checkWinner(currentPlayer, grid) {
+	if (grid[0][0] === currentPlayer && grid[1][0] === currentPlayer && 
+		grid[2][0] === currentPlayer) {		//COLONNA SINISTRA
 		return true
 		console.log("vittoria")
-	} else if (link[2].dataset.stato === currentPlayer && link[5].dataset.stato === currentPlayer && 
-		link[8].dataset.stato === currentPlayer) {		//COLONNA DESTRA
+	} else if (grid[0][1] === currentPlayer && grid[1][1] === currentPlayer && 
+		grid[2][1] === currentPlayer) {		//COLONNA CENTRALE
 		return true
 		console.log("vittoria")
-	} else if(link[0].dataset.stato === currentPlayer && link[1].dataset.stato === currentPlayer && 
-		link[2].dataset.stato === currentPlayer) { 		//RIGA ALTA
+	} else if (grid[0][2] === currentPlayer && grid[1][2] === currentPlayer && 
+		grid[2][2] === currentPlayer) {		//COLONNA DESTRA
 		return true
 		console.log("vittoria")
-	} else if (link[3].dataset.stato === currentPlayer && link[4].dataset.stato === currentPlayer && 
-		link[5].dataset.stato === currentPlayer) {		//RIGA CENTRALE
+	} else if (grid[0][0] === currentPlayer && grid[0][1] === currentPlayer && 
+		grid[0][2] === currentPlayer) { 		//RIGA ALTA
 		return true
 		console.log("vittoria")
-	} else if (link[6].dataset.stato === currentPlayer && link[7].dataset.stato === currentPlayer && 
-		link[8].dataset.stato === currentPlayer) {		//RIGA BASSA
+	} else if (grid[1][0] === currentPlayer && grid[1][1] === currentPlayer && 
+		grid[1][2] === currentPlayer) {		//RIGA CENTRALE
 		return true
 		console.log("vittoria")
-	} else if (link[0].dataset.stato === currentPlayer && link[4].dataset.stato === currentPlayer && 
-		link[8].dataset.stato === currentPlayer) {		//DIAGONALE SINISTRA-DESTRA
+	} else if (grid[2][0] === currentPlayer && grid[2][1] === currentPlayer && 
+		grid[2][2] === currentPlayer) {		//RIGA BASSA
 		return true
 		console.log("vittoria")
-	} else if (link[2].dataset.stato === currentPlayer && link[4].dataset.stato === currentPlayer && 
-		link[6].dataset.stato === currentPlayer) {		//DIAGONALE DESTRA-SINISTRA
+	} else if (grid[0][0] === currentPlayer && grid[1][1] === currentPlayer && 
+		grid[2][2] === currentPlayer) {		//DIAGONALE SINISTRA-DESTRA
+		return true
+		console.log("vittoria")
+	} else if (grid[0][2] === currentPlayer && grid[1][1] === currentPlayer && 
+		grid[2][0] === currentPlayer) {		//DIAGONALE DESTRA-SINISTRA
 		return true
 		console.log("vittoria")
 	} else {
 		return false
 	} 
+}
+
+function resultMatchCheck(currentPlayer) {
+	let result = null
+
+	win = checkWinner(currentPlayer, grid)
+	if (win === true) {
+		result = "win"
+	} else {
+		draw = fullCellsCheck(grid)
+
+		if (draw === true)  {
+			result = "draw"
+		}
+	}
+	return result
 }
