@@ -1,7 +1,5 @@
-/*FARE RISOLUZIONE PER TELEFONO E PC --> PC (FLESSIBILE, H: 800) E TELEFONO (IPHONE SE)
-CAMBIO SFONDO
-MENU PRINICPALI
-RESETTA VITTORIE*/
+/*FARE RISOLUZIONE PER TELEFONO E PC --> TABLET (FLESSIBILE, W: 1024) E TELEFONO (IPHONE SE) e PC (W: 1024 >)
+CAMBIO SFONDO*/
 
 * {
 	box-sizing: border-box;
@@ -227,7 +225,6 @@ RESETTA VITTORIE*/
 	width: 100%;
     justify-content: center;
 }
-.btnFieldChange,
 .btnMenu,
 .btnResetWin {			
 	flex-basis: 50%;
@@ -238,12 +235,10 @@ RESETTA VITTORIE*/
 	margin-right: 0;
 }
 
-.btnFieldChangeImage, 
 .btnMenuImage,
 .btnResetWinImage {
 	width: 30px;
 }
-.btnFieldChangeText, 
 .btnMenuText,
 .btnResetWinText {
 	font-size: 15px;
@@ -316,10 +311,9 @@ RESETTA VITTORIE*/
 
 
 
-
-
-
-
-
-
-
+	
+@media (max-width: 375px){
+	body {
+		background-color: red;
+	}
+}
