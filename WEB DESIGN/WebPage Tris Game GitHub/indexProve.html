@@ -168,17 +168,14 @@
 				let currentCellScore = miniMax(grid, currentPlayer === min ? max : min)
 
 
-				//NON FUNZIONA IL BEST MOVE CHE VIENE PRESO COME VUOTO
-
-
 				if (currentPlayer === min) {
-					if (currentCellScore < bestScore) {
+					if (currentCellScore <= bestScore) {
 						bestScore = currentCellScore
 
 						bestMove = [i, j]
 					}
 				} else {
-					if (currentCellScore > bestScore) {
+					if (currentCellScore >= bestScore) {
 						bestScore = currentCellScore
 
 						bestMove = [i, j]

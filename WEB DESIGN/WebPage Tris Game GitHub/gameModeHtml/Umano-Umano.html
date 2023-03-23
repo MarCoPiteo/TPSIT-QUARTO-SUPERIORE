@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Marvel Tris Umano vs Umano</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/game-style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+	<div class="mainContainer flex flexColumn">
+		<div class="titleRow flex flexColumn">
+			<img src="../static/images/ScrittaMarvel.png" class="titleImage">
+			<h1 class="title fontAvengero">Avengers Tris</h1>
+		</div>
+
+		<div class="backgroundSetRow flex flexRow">
+			<div class="playerO flex flexColumn">
+				<h2 class="playerOText fontIronMan">Iron Man</h2>
+				<img src="../static/images/ironman1.png" class="playerOImage playerImages">
+				<h3 class="playerOWin fontIronMan functionPlayerWin">0</h3>
+			</div>
+
+			<div class="trisTable flex">
+				<div class="pitchDivContainer flex flexColumn">
+					<div class="flex flexRow">
+						<a href="#" 
+							class="pitchSquare" 
+							data-row="0"
+							data-col="0"></a>
+						<a href="#" 
+							class="pitchSquare" 
+							data-row="0"
+							data-col="1"></a>
+						<a href="#" 
+							class="pitchSquare noBorder-r" 
+							data-row="0"
+							data-col="2"></a>
+					</div>
+					<div class="flex flexRow">
+						<a href="#" 
+							class="pitchSquare" 
+							data-row="1"
+							data-col="0"></a>
+						<a href="#" 
+							class="pitchSquare" 
+							data-row="1"
+							data-col="1"></a>
+						<a href="#" 
+							class="pitchSquare noBorder-r" 
+							data-row="1"
+							data-col="2"></a>
+					</div>
+					<div class="flex flexRow">
+						<a href="#" 
+							class="pitchSquare noBorder-b" 
+							data-row="2"
+							data-col="0"></a>
+						<a href="#" 
+							class="pitchSquare noBorder-b" 
+							data-row="2"
+							data-col="1"></a>
+						<a href="#" 
+							class="pitchSquare noBorder-r noBorder-b" 
+							data-row="2"
+							data-col="2"></a>
+					</div>
+				</div>
+			</div>
+
+			<div class="playerX flex flexColumn">
+				<h2 class="playerXText fontThanos">Thanos</h2>
+				<img src="../static/images/thanos4.png" class="playerXImage playerImages">
+				<h3 class="playerXWin fontThanos functionPlayerWin">0</h3>
+			</div>
+		</div>
+
+		<div class="finalRow flex flexRow">
+			<div class="leftContainer flex flexColumn">
+				<div class="playerOLife flex flexRow">
+					<img src="../static/images/reattoreArc.png" class="playerOLifeImage functionRemoveMove" data-move="0">
+					<img src="../static/images/reattoreArc.png" class="playerOLifeImage functionRemoveMove" data-move="0">	
+					<img src="../static/images/reattoreArc.png" class="playerOLifeImage functionRemoveMove" data-move="0">	
+					<img src="../static/images/reattoreArc.png" class="playerOLifeImage functionRemoveMove" data-move="0">	
+				</div>
+
+				<div class="btnContainer flex flexRow">
+					<a href="../mainIndex.html" class="btnLink flex flexColumn btnMenu">
+						<img src="../static/images/gemma-blu.png" class="btnMenuImage">
+						<h2 class="btnMenuText btnLink fontAvengero">Back To Menu</h2>
+					</a>
+				</div>
+			</div>
+
+			<div class="restartButton">
+				<a href="#" class="btnLink btnRestart flex flexColumn">
+					<img src="../static/images/infinityGauntlet.png" class="restartButtonImage">
+					<h2 class="restartButtonText fontAvengero">Restart</h2>
+				</a>
+			</div>
+
+			<div class="rightContainer flex flexColumn">
+				<div class="playerXLife flex flexRow">
+					<img src="../static/images/thanosFace.png" class="playerXLifeImage functionRemoveMove" data-move="0">
+					<img src="../static/images/thanosFace.png" class="playerXLifeImage functionRemoveMove" data-move="0">	
+					<img src="../static/images/thanosFace.png" class="playerXLifeImage functionRemoveMove" data-move="0">	
+					<img src="../static/images/thanosFace.png" class="playerXLifeImage functionRemoveMove" data-move="0">
+				</div>
+				<div>
+					<a href="#" class="btnLink flex flexColumn btnResetWin">
+						<img src="../static/images/gemma-arancio.png" class="btnResetWinImage">
+						<h2 class="btnResetWinText btnLink fontAvengero">Reset Win</h2>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="../static/js/general-function.js"></script>
+	<script type="text/javascript" src="../static/js/human-human.js"></script>
+</body>
+</html>

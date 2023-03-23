@@ -1,0 +1,144 @@
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.fontAvengero {
+	font-family: 'Avengero Disassembled', sans-serif;
+} 
+.fontThanos {
+	font-family: 'GALACTIC VANGUARDIAN NCV', sans-serif;
+	background: linear-gradient(0deg, #635E5E, #635E5E);
+	background: conic-gradient(from -0.13deg at 50% 50%, #9121C6 0deg, rgba(175, 44, 236, 0.25) 159.14deg, rgba(162, 29, 224, 0.25) 198.6deg, #9121C6 360deg);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			text-fill-color: transparent;
+			background-color: purple;
+
+}
+.fontIronMan {
+	font-family: 'CGF Arch Reactor', sans-serif;
+	background: #E7D160;
+	background: conic-gradient(from -0.13deg at 50% 50%, #E09E1D 0deg, rgba(231, 209, 96, 0) 180deg, #E09E1D 360deg);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			text-fill-color: transparent;		
+			background-color: yellow;				
+}
+
+
+.flex {
+	display: flex;
+	align-items: center;
+}
+.flexColumn {
+	flex-direction: column;
+}
+.flexRow {
+	flex-direction: row;
+}
+
+.btnLink {
+	text-decoration: none; 
+}
+
+
+
+.mainContainer {
+	min-height: 100vh;
+	max-width: 1320px;
+}
+
+
+.titleRow {
+	width: 625px;
+}
+.title {
+	font-size: 60px;
+	color: #A72A2A;
+	text-shadow: 2px 0 #7E7070, -2px 0 #7E7070, 0 2px #7E7070, 0 -2px #7E7070,
+            2px 2px #7E7070, -2px -2px #7E7070, 2px -2px #7E7070, -2px 2px #7E7070;
+	margin-top: -23px;
+}
+.titleImage {
+	position: relative;
+	width: 176px;
+	height: 95px;
+}
+
+
+.backgroundSetRow {
+	margin-top: 98px;
+	width: 100%;
+	justify-content: center;	
+	flex-wrap: wrap;
+}
+
+.playerO {
+	flex-basis: 50%;
+}
+.playerOText {
+	font-size: 65px;
+	font-weight: 400;
+	text-align: center;
+	height: 87px;
+}
+.playerOImage {
+	margin-top: 13px;
+	width: 251px;
+	height: 341px;
+}
+
+
+.gameModeBtnDiv {
+	text-align: center;
+	padding-top: 30px;
+	padding-left: 30px;
+}
+
+.gameModeBtn {
+	border: 3px solid red; 
+	border-radius: 10px;
+
+	padding: 10px;
+	padding-right: 20px;
+	padding-left: 20px;
+	margin-right: 30px;
+
+	font-size: 20px;
+	background: radial-gradient(141.77% 1228.84% at 129.22% 71.12%, #A610DB 23.89%, #1D31E7 39.6%, #00F736 51.09%, #F1E922 65.3%, #F1890F 76.18%, #E71D1D 86.46%, rgba(231, 29, 29, 0.1) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		text-fill-color: transparent;
+}
+
+
+.playerX {
+	flex-basis: 50%;
+}
+.playerXText {
+	font-size: 65px;
+	font-weight: 400;
+	text-align: center;
+	height: 75px;
+}
+.playerXImage {	
+	width: 251px;
+	height: 360px;			
+	margin-top: 5px;
+}
+
+
+
+
+	
+@media (max-width: 375px){
+	body {
+		background-color: red;
+	}
+}
