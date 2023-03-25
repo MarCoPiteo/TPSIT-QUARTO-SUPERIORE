@@ -294,35 +294,6 @@ CAMBIO SFONDO*/
 }
 
 
-
-.modalOverlay{
-	position: fixed;
-	top: -100%;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	transition: all 0.5s ease-in-out;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 10000;
-	background: rgba(0, 0, 0, 0.5);
-	backdrop-filter: blur(10px);
-}
-
-.modalOverlay.open{
-	top: 0;
-}
-
-.modal{
-	width: 90%; /* mobile */
-	min-height: 90%;
-	background: #fff;
-	text-align: center;
-}
-
-
-
 	
 @media (max-width: 375px){
 	body {

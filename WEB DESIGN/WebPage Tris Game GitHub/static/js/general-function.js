@@ -53,36 +53,6 @@ function fullCellsCheck(grid) {
 	}
 }
 
-function checkWinner(currentPlayer, grid) {
-	if (grid[0][0] === currentPlayer && grid[1][0] === currentPlayer && 
-		grid[2][0] === currentPlayer) {		//COLONNA SINISTRA
-		return true
-	} else if (grid[0][1] === currentPlayer && grid[1][1] === currentPlayer && 
-		grid[2][1] === currentPlayer) {		//COLONNA CENTRALE
-		return true
-	} else if (grid[0][2] === currentPlayer && grid[1][2] === currentPlayer && 
-		grid[2][2] === currentPlayer) {		//COLONNA DESTRA
-		return true
-	} else if (grid[0][0] === currentPlayer && grid[0][1] === currentPlayer && 
-		grid[0][2] === currentPlayer) { 		//RIGA ALTA
-		return true
-	} else if (grid[1][0] === currentPlayer && grid[1][1] === currentPlayer && 
-		grid[1][2] === currentPlayer) {		//RIGA CENTRALE
-		return true
-	} else if (grid[2][0] === currentPlayer && grid[2][1] === currentPlayer && 
-		grid[2][2] === currentPlayer) {		//RIGA BASSA
-		return true
-	} else if (grid[0][0] === currentPlayer && grid[1][1] === currentPlayer && 
-		grid[2][2] === currentPlayer) {		//DIAGONALE SINISTRA-DESTRA
-		return true
-	} else if (grid[0][2] === currentPlayer && grid[1][1] === currentPlayer && 
-		grid[2][0] === currentPlayer) {		//DIAGONALE DESTRA-SINISTRA
-		return true
-	} else {
-		return false
-	} 
-}
-
 
 //.....................VISIBILITY FUNCTION.......................//
 function restartCleaning() {
@@ -197,20 +167,49 @@ const animateCSS = (element = '.playerImages', animation = 'pulse', prefix = 'an
 
 
 //---------------------UMANO-ROBOT e UMANO-UMANO----------------------//
-function resultMatchCheck(currentPlayer) {
-	let result = null
+function resultMatchCheck(grid) {
+	let result = null;
 
-	win = checkWinner(currentPlayer, grid)
-	if (win === true) {
-		result = "win"
-	} else {
-		draw = fullCellsCheck(grid)
+	//----------------ORIZZONTALE----------------//
+	for (let i = 0; i < grid.length; i++) {
+		if (grid[i][0] != null && grid[i][0] === grid[i][1] && grid[i][1] === grid[i][2]) {
+			result = grid[i][0];
 
-		if (draw === true)  {
-			result = "draw"
+			return result;
 		}
 	}
-	return result
+
+	//----------------VERTICALE----------------//
+	for (let j = 0; j < grid.length; j++) {
+		if (grid[0][j] != null && grid[0][j] === grid[1][j] && grid[1][j] === grid[2][j]) {
+			result = grid[0][j];
+
+			return result;
+		}
+	}
+
+	//----------------DIAGONALE SX-DX----------------//
+	if (grid[0][0] != null && grid[0][0] === grid[1][1] && grid[1][1] === grid[2][2]) {		
+		result = grid[0][0]
+
+		return result
+	}
+
+	//----------------DIAGONALE DX-SX----------------//
+	if (grid[0][2] != null && grid[0][2] === grid[1][1] && grid[1][1] === grid[2][0]) {		
+		result = grid[0][2]
+
+		return result
+	}
+
+
+	let draw = fullCellsCheck(grid)
+
+	if (result === null && draw === true) {
+		return "draw"
+	} else {
+		return result
+	}
 }
 
 

@@ -3,8 +3,7 @@
 
 flgUserMove = false
 
-let userPlayer = startPlayer()
-currentPlayer = userPlayer 
+currentPlayer = startPlayer()
 
 
 
@@ -23,33 +22,33 @@ for (let i = 0; i < link.length; i++) {
 
 		if (flgUserMove === true) {
 			if (grid[row][col] === null) {
-				if (userPlayer === "O") {
+				if (currentPlayer === "O") {
 					casella.classList.add("playerOPlay")
 				} else {
 					casella.classList.add("playerXPlay")
 				}
+
 				grid[row][col] = currentPlayer
 				playAudio(`../static/mp3/player${currentPlayer}.mp3`)
 				removeMove(currentPlayer)
 	
+
 				//-------------CHECK RISULTATO----------//
-				resultMatch = resultMatchCheck(currentPlayer)
+				resultMatch = resultMatchCheck(grid)
 	
-				if (resultMatch === "win") {
-					setTimeout(function() {
-						winUpdate()
-						restartCleaning()
-					}, 1000)
-				} else if (resultMatch === "draw") {
-					setTimeout(function() {
-						restartCleaning()
-					}, 500)
+				if (resultMatch != null) {
+					if (resultMatch != "draw") {
+						setTimeout(function() {
+							winUpdate()
+							restartCleaning()
+						}, 1000)
+					} else if (resultMatch === "draw") {
+						setTimeout(function() {
+							restartCleaning()
+						}, 500)
+					}
 				} else if (resultMatch === null) {
-					if (userPlayer === "O") {
-						currentPlayer = "X"
-					} else {
-						currentPlayer = "O"
-					} 
+					currentPlayer = currentPlayer === "O" ? "X" : "O" 
 					flgUserMove = false
 
 					animationPlayer(currentPlayer)
@@ -59,33 +58,35 @@ for (let i = 0; i < link.length; i++) {
 					//COMPUTER MOVE//
 					timeout = setTimeout(function(){
 						let computerMove = getBestMove(grid)
-						grid[computerMove[0]][computerMove[1]] = currentPlayer
 	
 						let computerCasella = document.querySelector(`.pitchSquare[data-row="${computerMove[0]}"][data-col="${computerMove[1]}"]`)
 	
-						if (userPlayer === "O") {
+						if (currentPlayer === "X") {
 							computerCasella.classList.add("playerXPlay")
 						} else {
 							computerCasella.classList.add("playerOPlay")
 						}
-						playAudio(`../static/mp3/player${currentPlayer}.mp3`)
-	
-	
-						resultMatch = resultMatchCheck(currentPlayer)
-	
-						if (resultMatch === "win") {
-							setTimeout(function() {
-								winUpdate()
-								restartCleaning()
-							}, 1000)
-						} else if (resultMatch === "draw") {
-							setTimeout(function() {
-								restartCleaning()
-							}, 500)
-						} else if (resultMatch === null) {
-							removeMove(currentPlayer)
 
-							currentPlayer = userPlayer
+						grid[computerMove[0]][computerMove[1]] = currentPlayer
+						playAudio(`../static/mp3/player${currentPlayer}.mp3`)
+						removeMove(currentPlayer)
+	
+	
+						resultMatch = resultMatchCheck(grid)
+	
+						if (resultMatch != null) {
+							if (resultMatch != "draw") {
+								setTimeout(function() {
+									winUpdate()
+									restartCleaning()
+								}, 1000)
+							} else if (resultMatch === "draw") {
+								setTimeout(function() {
+									restartCleaning()
+								}, 500)
+							}
+						} else if (resultMatch === null) {
+							currentPlayer = currentPlayer === "X" ? "O" : "X" 
 
 							animationPlayer(currentPlayer)
 						}

@@ -28,25 +28,24 @@ for (let i = 0; i < link.length; i++) {
 				removeMove(currentPlayer)
 					
 				//CHECK RISULTATO//
-				resultMatch = resultMatchCheck(currentPlayer)
+				resultMatch = resultMatchCheck(grid)
 						
-				if (resultMatch === "win") {
-					setTimeout(function() {
-						winUpdate()
-						restartCleaning()
-					}, 1000)
-				} else if (resultMatch === "draw") {
-					setTimeout(function() {
-						restartCleaning()
-					}, 500)
+				if (resultMatch != null) {
+					if (resultMatch != "draw") {
+						setTimeout(function() {
+							winUpdate()
+							restartCleaning()
+						}, 1000)
+					} else if (resultMatch === "draw") {
+						setTimeout(function() {
+							restartCleaning()
+						}, 500)
+					}
 				} else if (resultMatch === null) {
 					flgUserMove = false
+					
+					currentPlayer = currentPlayer === "O" ? "X" : "O" 
 
-					if (currentPlayer === "O") {
-						currentPlayer = "X"
-					} else {
-						currentPlayer = "O"
-					} 
 					animationPlayer(currentPlayer)
 
 					setTimeout(function() {
