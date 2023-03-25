@@ -184,7 +184,7 @@ function miniMax(grid, currentPlayer) {
 	}
 
 	let emptyCells = getEmptyCells(grid);
-	let vincitore = gameOver(currentPlayer, grid);
+	let vincitore = checkWin(grid);
 
 	//controllo il vincitore
 	if (vincitore != null) {
@@ -205,6 +205,7 @@ function miniMax(grid, currentPlayer) {
 				bestScore = Math.max(score, bestScore);
 				grid[i][j] = null;
 			});
+			return bestScore
 		} else {
 			emptyCells.forEach(function (element) {
 				let i = element[0];
@@ -214,6 +215,7 @@ function miniMax(grid, currentPlayer) {
 				bestScore = Math.min(bestScore, score);
 				grid[i][j] = null;
 			});
+			return bestScore
 		}
 	}
 	return bestScore;
@@ -266,18 +268,50 @@ function miniMax(grid, currentPlayer) {
 }
 
 
-function gameOver(currentPlayer, grid) {
-	let gameOver = null
 
-	win = checkWinner(currentPlayer, grid)
-	if (win === true) {
-		gameOver = currentPlayer
-	} else {
-		draw = fullCellsCheck(grid)
 
-		if (draw === true)  {
-			gameOver = "draw"
+
+function checkWin(grid) {
+	let result = null;
+
+	//----------------ORIZZONTALE----------------//
+	for (let i = 0; i < grid.length; i++) {
+		if (grid[i][0] != null && grid[i][0] === grid[i][1] && grid[i][1] === grid[i][2]) {
+			result = grid[i][0];
+
+			return result;
 		}
 	}
-	return gameOver
+
+	//----------------VERTICALE----------------//
+	for (let j = 0; j < grid.length; j++) {
+		if (grid[0][j] != null && grid[0][j] === grid[1][j] && grid[1][j] === grid[2][j]) {
+			result = grid[0][j];
+
+			return result;
+		}
+	}
+
+	//----------------DIAGONALE SX-DX----------------//
+	if (grid[0][0] != null && grid[0][0] === grid[1][1] && grid[1][1] === grid[2][2]) {		
+		result = grid[0][0]
+
+		return result
+	}
+
+	//----------------DIAGONALE DX-SX----------------//
+	if (grid[0][2] != null && grid[0][2] === grid[1][1] && grid[1][1] === grid[2][0]) {		
+		result = grid[0][2]
+
+		return result
+	}
+
+
+	let draw = fullCellsCheck(grid)
+
+	if (result === null && draw === true) {
+		return "draw"
+	} else {
+		return result
+	}
 }
