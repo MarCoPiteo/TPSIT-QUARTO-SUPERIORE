@@ -49,14 +49,14 @@ for (let i = 0; i < link.length; i++){
 
 					//-------------MAX MOVE----------------//
 					timeout = setTimeout(function() {
-						let compMove = getBestMove(grid, currentPlayer)
+						let compMove = getBestMove(grid, max)
 
 
 				    	let compRow = compMove[0],
 				    	compCol = compMove[1]
 
-			    		grid[compRow][compCol] = currentPlayer
-
+			    		grid[compRow][compCol] = max
+						playAudio(`../static/mp3/player${currentPlayer}.mp3`)
 
 						let computerCasella = document.querySelector(`.pitchSquare[data-row="${compRow}"][data-col="${compCol}"]`)
 						computerCasella.classList.add("playerXPlay")
@@ -108,7 +108,37 @@ function startPlayer() {
 
 
 function getBestMove(grid, currentPlayer) {
-	let bestScore = currentPlayer === min ? Infinity : -Infinity
+	let max = "X",
+		min = "O"
+
+	let bestScore = currentPlayer === min ? Infinity : -Infinity,
+		bestMove = [],
+		empty = getEmptyCells(grid);
+
+	empty.forEach((emptyCell) => {
+		let i = emptyCell[0];
+		let j = emptyCell[1];
+
+		grid[i][j] = currentPlayer === min ? min : max;
+
+		let currentMoveScore = miniMax(grid, currentPlayer === min ? max : min);
+		
+		if (currentPlayer === min) {
+			// min
+			if (currentMoveScore <= bestScore) {
+				bestScore = currentMoveScore;
+				bestMove = [i, j];
+			}
+		} else {
+			if (currentMoveScore >= bestScore) {
+				bestScore = currentMoveScore;
+				bestMove = [i, j];
+			}
+		}
+		grid[i][j] = null;
+	});
+	return bestMove;
+	/*let bestScore = currentPlayer === min ? Infinity : -Infinity
 
 	let	bestMove = []
 	let emptyCells = getEmptyCells(grid)
@@ -138,12 +168,56 @@ function getBestMove(grid, currentPlayer) {
 		}
 		grid[i][j] = null
 	});
-	return bestMove
+	return bestMove*/
 }
 
 
 function miniMax(grid, currentPlayer) {
-	let bestScore = currentPlayer === max ? -Infinity : Infinity
+	let bestScore;
+	let max = "X",
+		min = "O"
+
+	if (currentPlayer === min) {
+		bestScore = Infinity;
+	} else {
+		bestScore = -Infinity;
+	}
+
+	let emptyCells = getEmptyCells(grid);
+	let vincitore = gameOver(currentPlayer, grid);
+
+	//controllo il vincitore
+	if (vincitore != null) {
+		if (vincitore === max) {
+			return 1;
+		} else if (vincitore === min) {
+			return -1;
+		} else if (vincitore === "draw") {
+			return 0;
+		}
+	} else {
+		if (currentPlayer === max) {
+			emptyCells.forEach(function (element) {
+				let i = element[0];
+				let j = element[1];
+				grid[i][j] = max;
+				let score = miniMax(grid, min);
+				bestScore = Math.max(score, bestScore);
+				grid[i][j] = null;
+			});
+		} else {
+			emptyCells.forEach(function (element) {
+				let i = element[0];
+				let j = element[1];
+				grid[i][j] = min;
+				let score = miniMax(grid, max);
+				bestScore = Math.min(bestScore, score);
+				grid[i][j] = null;
+			});
+		}
+	}
+	return bestScore;
+	/*let bestScore = currentPlayer === max ? -Infinity : Infinity
 
 	let	emptyCells = getEmptyCells(grid)
 	let result = gameOver(currentPlayer)
@@ -188,11 +262,11 @@ function miniMax(grid, currentPlayer) {
 			return bestScore
 		} 
 	}
-	return bestScore
+	return bestScore*/
 }
 
 
-function gameOver(currentPlayer) {
+function gameOver(currentPlayer, grid) {
 	let gameOver = null
 
 	win = checkWinner(currentPlayer, grid)

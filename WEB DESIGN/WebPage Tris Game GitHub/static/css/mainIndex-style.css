@@ -1,3 +1,20 @@
+@font-face {
+	src: url("../../fonts/avenge-font/AvengeRegular-Yzdxy.ttf");
+	font-family: 'Avenge', sans-serif;
+}
+@font-face {
+	src: url("../../fonts/avengero-disassembled-font/AvengeroDisassembledRegular-nRvd4.ttf");
+	font-family: 'Avengero Disassembled', sans-serif;
+}
+@font-face {
+	src: url("../../fonts/cgf-arch-reactor-font/CgfArchReactor-XwBj.ttf");
+	font-family: 'CGF Arch Reactor', sans-serif;
+}
+@font-face {
+	src: url("../../fonts/galactic-vanguardian-font/GalacticVanguardianNcv-myVP.ttf");
+	font-family: 'GALACTIC VANGUARDIAN NCV', sans-serif;
+}
+
 
 * {
 	box-sizing: border-box;
