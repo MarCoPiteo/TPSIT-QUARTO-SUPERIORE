@@ -33,9 +33,16 @@ for (let i = 0; i < link.length; i++) {
 				if (resultMatch != null) {
 					if (resultMatch != "draw") {
 						setTimeout(function() {
-							winUpdate()
-							restartCleaning()
-						}, 1000)
+							if (currentPlayer === "O") {
+								playAudio(`../static/mp3/vittoria.mp3`)
+							} else {
+								playAudio(`../static/mp3/sconfitta.mp3`)
+							}
+							setTimeout(function() {
+								winUpdate()
+								restartCleaning()
+							}, 1000)
+						}, 2000)
 					} else if (resultMatch === "draw") {
 						setTimeout(function() {
 							restartCleaning()
