@@ -33,7 +33,8 @@ function finalCallback(data) {
 
     //QUI HO ACCESSO AL JSON FINALE
     document.querySelector(".sentenceBox").innerHTML = data.value
-    document.querySelector(".urlBox").value = data.url
+    document.querySelector(".urlBox").innerHTML = data.url 
+    /*document.querySelector(".urlBox").setAttribute('value', data.url)*/
 }
 
 function catchCallback(error) {
@@ -44,10 +45,10 @@ function catchCallback(error) {
 
 
 document.querySelector(".copyButton").addEventListener("click", function(e) {
-    let copyText = document.querySelector(".urlBox") 
-
-    copyText.select();
-
-    navigator.clipboard.writeText(copyText.value)
-    alert("Copied the text: " + copyText.value);
+    var area = document.querySelector(".urlBox").value;
+    area.select();
+    navigator.clipboard.writeText(copyText.value);
+    var risultato = document.execCommand('copy');
+    alert('testo copiato: '+ area);
+    return risultato;
 })
