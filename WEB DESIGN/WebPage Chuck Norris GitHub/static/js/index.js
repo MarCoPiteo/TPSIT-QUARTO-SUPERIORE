@@ -1,4 +1,3 @@
-
 document.querySelector("#categoriesForm").addEventListener("submit", function(e) {
     e.preventDefault()
 
@@ -34,7 +33,7 @@ function finalCallback(data) {
 
     //QUI HO ACCESSO AL JSON FINALE
     document.querySelector(".sentenceBox").innerHTML = data.value
-    document.querySelector(".urlBox").innerHTML = data.url
+    document.querySelector(".urlBox").value = data.url
 }
 
 function catchCallback(error) {
@@ -42,3 +41,13 @@ function catchCallback(error) {
     error = "Mr. Chuck Norris doesn't have jokes"
     document.querySelector(".sentenceBox").innerHTML = error
 }
+
+
+document.querySelector(".copyButton").addEventListener("click", function(e) {
+    let copyText = document.querySelector(".urlBox") 
+
+    copyText.select();
+
+    navigator.clipboard.writeText(copyText.value)
+    alert("Copied the text: " + copyText.value);
+})
