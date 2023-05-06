@@ -27,21 +27,33 @@
 
 
 .title {
-    color: #D8572A;
-    /*font-size: 52px;*/
-    font-size: 35px;
+    font-size: 10.9vw;
+    margin: 0;
     position: relative;
+    color: #D8572A;
+    /*font-size: 52px;
+    font-size: 35px;
+    position: relative;*/
     text-shadow: -1.5px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1.5px black;
 }
 .title::after {
-    content: "";
+    /*content: "";
     background-image: url("../images/gun.png");
     position: absolute;
     overflow-x: hidden;
     width: 111px;
     height: 92px;
     left: 184px;
-    top: 20px;
+    top: 20px;*/
+    content: "";
+    position: absolute;
+    width: 30vw;
+    height: 25vw;
+    left: 86%;
+    transform: translateX(-50%);
+    top: 32%;
+    background-image: url(../images/gun.png);
+    background-size: cover;
 }
 
 
