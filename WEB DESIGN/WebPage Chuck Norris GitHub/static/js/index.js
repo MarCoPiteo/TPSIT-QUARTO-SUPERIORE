@@ -1,3 +1,5 @@
+
+
 document.querySelector("#categoriesForm").addEventListener("submit", function(e) {
     e.preventDefault()
 
@@ -35,7 +37,7 @@ function finalCallback(data) {
     document.querySelector(".sentenceBox").innerHTML = data.value
 
     document.querySelector(".urlBox").setAttribute('href', data.url)
-    document.querySelector(".urlBox").classList.remove("disabled")
+    document.querySelector(".urlBox").classList.remove("disabled")    
 }
 
 function catchCallback(error) {
@@ -47,12 +49,20 @@ function catchCallback(error) {
 
 document.querySelector(".copyButton").addEventListener("click", function(e) {
     let CopyArea = document.querySelector(".sentenceBox");
+    let copiedText = document.querySelector(".copyButton")
+
 
     let range = document.createRange();
     range.selectNode(CopyArea);
 
     navigator.clipboard.writeText(CopyArea.textContent);
     let CopyAler = document.execCommand('copy');
-    alert('testo copiato: '+ CopyArea.textContent);
+
+    copiedText.classList.add("transition")
+
+    copiedText.innerHTML = "Copied Joke"
+    setTimeout(function() {
+        copiedText.innerHTML = "Copy"
+    }, 2000)   
     return CopyAler;
 })
