@@ -49,7 +49,8 @@
     position: absolute;
     width: 30vw;
     height: 25vw;
-    left: 86%;
+    left: 88%;
+    line-height: 120%;
     transform: translateX(-50%);
     top: 32%;
     background-image: url(../images/gun.png);
@@ -117,8 +118,12 @@
     background-image: url("../images/copy-icons.png");
     width: 15px;
     height: 15px;
-    position: absolute;
+    /*position: absolute;
     left: 96px;
+    top: 50%;
+    transform: translateY(-50%);*/
+    position: absolute;
+    left: calc(100% - 20px);
     top: 50%;
     transform: translateY(-50%);
 }
