@@ -1,7 +1,3 @@
-/*#error{
-    color: red;
-}*/
-
 * {
     margin: 0;
     padding: 0;
@@ -20,6 +16,10 @@
     display: flex;
 }
 
+.urlContainer .disabled {
+    background-color: #E1E1E1;
+}
+
 
 .mainContainer {
     max-width: 84.65%;
@@ -29,6 +29,17 @@
 .title {
     color: #D8572A;
     font-size: 52px;
+    position: relative;
+    text-shadow: -1.5px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1.5px black;
+}
+.title::after {
+    content: "";
+    background-image: url("../images/gun.png");
+    position: absolute;
+    width: 111px;
+    height: 92px;
+    left: 270px;
+    top: 50px;
 }
 
 
@@ -61,7 +72,7 @@
 
 
 .formButton {
-    margin-top: 156px;
+    margin-top: 75px;
 }
 .requestButton {
     width: 100%;
@@ -74,8 +85,7 @@
     border-radius: 10px;
 }
 
-
-.urlContainer {
+.urlButton {
     margin-top: 18px;
 }
 .copyButton {
@@ -86,23 +96,32 @@
     cursor: pointer;
     border: none;
     border-radius: 10px;
-
-   justify-content: space-evenly;
-    align-items: center;
-    padding: 0 2% 0 10.5%;
+    position: relative;
 }
-.copy-icon {
+.copyButton::after {
+    content: "";
+    background-image: url("../images/copy-icons.png");
     width: 15px;
     height: 15px;
+    position: absolute;
+    left: 136px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
+
+.urlContainer {
+    margin-top: 85px;
+}
 .urlBox {
-    border-radius: 20px;
-    border: 1px solid black;
-    background-color: #E1E1E1;
+    border-radius: 10px;
+    background-color: #661B01;
+    transition: all 0.5s ease-in-out;
     width: 100%;
-    height: 60px;
-    margin-top: 45px;
+    height: 45px;
+    font-size: 22px;
+    color: #FFF;
+    text-decoration: none;
 
     justify-content: center;
     align-items: center;

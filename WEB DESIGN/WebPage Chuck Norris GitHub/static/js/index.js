@@ -33,8 +33,9 @@ function finalCallback(data) {
 
     //QUI HO ACCESSO AL JSON FINALE
     document.querySelector(".sentenceBox").innerHTML = data.value
-    document.querySelector(".urlBox").innerHTML = data.url 
-    /*document.querySelector(".urlBox").setAttribute('value', data.url)*/
+
+    document.querySelector(".urlBox").setAttribute('href', data.url)
+    document.querySelector(".urlBox").classList.remove("disabled")
 }
 
 function catchCallback(error) {
@@ -45,10 +46,13 @@ function catchCallback(error) {
 
 
 document.querySelector(".copyButton").addEventListener("click", function(e) {
-    var area = document.querySelector(".urlBox").value;
-    area.select();
-    navigator.clipboard.writeText(copyText.value);
-    var risultato = document.execCommand('copy');
-    alert('testo copiato: '+ area);
-    return risultato;
+    let CopyArea = document.querySelector(".sentenceBox");
+
+    let range = document.createRange();
+    range.selectNode(CopyArea);
+
+    navigator.clipboard.writeText(CopyArea.textContent);
+    let CopyAler = document.execCommand('copy');
+    alert('testo copiato: '+ CopyArea.textContent);
+    return CopyAler;
 })
