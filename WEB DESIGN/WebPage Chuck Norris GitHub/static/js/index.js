@@ -58,7 +58,6 @@ document.querySelector(".copyButton").addEventListener("click", function(e) {
     navigator.clipboard.writeText(CopyArea.textContent);
     let CopyAler = document.execCommand('copy');
 
-    copiedText.classList.add("transition")
 
     copiedText.innerHTML = "Copied Joke"
     setTimeout(function() {
