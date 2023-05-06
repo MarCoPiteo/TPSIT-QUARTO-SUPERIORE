@@ -29,7 +29,7 @@
 .title {
     color: #D8572A;
     /*font-size: 52px;*/
-    font-size: 35px;
+    font-size: 10.9%;
     position: relative;
     text-shadow: -1.5px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1.5px black;
 }
@@ -40,7 +40,7 @@
     overflow-x: hidden;
     width: 111px;
     height: 92px;
-    left: 184px;
+    left: 57.5%;
     top: 20px;
 }
 
