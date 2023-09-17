@@ -9,4 +9,4 @@
 | **Febbraio** | / | / | / | [_Recursive Esercizi_](https://github.com/MarCoPiteo/TPSIT-REPOSITORIES/tree/main/JAVA%20SCRIPT%20ONLY/Esercizi%20RecursivePower) <br><br> [_Esercizio Conversione Decimale-Binario_](https://github.com/MarCoPiteo/TPSIT-REPOSITORIES/tree/main/JAVA%20SCRIPT%20ONLY/Esercizio%20Decimale-Binario%20Recursive) |
 | **Marzo** | / | / | / | / |
 | **Aprile** | / | / | / | / |
-| **Maggio** | //WORKING// | //WORKING// | [_Joke Chuck Norris_](https://github.com/MarCoPiteo/TPSIT-REPOSITORIES/tree/main/WEB%20DESIGN/WebPage%20Chuck%20Norris%20GitHub) | //WORKING// |
+| **Maggio** | / | / | [_Joke Chuck Norris_](https://github.com/MarCoPiteo/TPSIT-REPOSITORIES/tree/main/WEB%20DESIGN/WebPage%20Chuck%20Norris%20GitHub) | / |
